@@ -12,6 +12,9 @@ import Navbar from './components/NavBar'
 import { BrowserRouter as Router, useNavigate, Routes, Route } from 'react-router-dom'
 import L1page from './pages/l1page'
 import Footer from './components/Footer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faShieldAlt, faMobileAlt, faHeartbeat, faBook, faAppleAlt } from '@fortawesome/free-solid-svg-icons'
+import l1 from './assets/l1.svg'
 
 // import HealthEcosystemTimeline from './lifestages'
 
@@ -226,7 +229,7 @@ const stageInfo=[
   },
   {
     id:7,
-    "title": "End of the Life and Death Services",
+    "title": "End of the Life",
       "ageRange": null,
     icon:()=><Stage7  width="40" height="50"/>
   }
@@ -363,13 +366,13 @@ const stageInfo=[
 
       {/* Tag Cloud Section */}
       <section className="w-full py-16 px-4" style={{backgroundColor: '#29136C'}}>
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative">
           {/* 7 Circles */}
-          <div className="flex justify-between items-start mb-8" >
+          <div className="flex justify-between items-start mb-8 relative">
             {stageInfo.map((stage, index) => (
             <div  
               key={index} 
-              className='w-28 flex flex-col gap-2 cursor-pointer transition-all duration-300 hover:scale-110'
+              className='w-28 flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 hover:scale-110 relative'
               onMouseEnter={() => setActiveStep(stage?.id)}
               onClick={() => {
                 if (stage?.id === 1) {
@@ -377,67 +380,91 @@ const stageInfo=[
                 }
               }}
             >
+              {/* Fixed height for title to align circles */}
+              <div style={{ minHeight: 48, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+                <p className={`text-center transition-all duration-300 mb-1 ${activeStep===stage.id?"text-[green]":"text-white"}`}>{stage.title}</p>
+              </div>
               <div
-                className={`w-28 h-28 rounded-full ${activeStep===stage.id?"text-[green] bg-[#9AD9B1]":"text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
+                className={`w-28 h-28 rounded-full flex-shrink-0 ${activeStep===stage.id?"text-[green] bg-[#9AD9B1]":"text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
+                style={{ position: 'relative', zIndex: 2 }}
               >
                 {stage.icon?.()}
+                {/* Arrow from Prenatal circle to box */}
+                {stage.id === 1 && activeStep === 1 && (
+                  <svg
+                    width="40"
+                    height="50"
+                    viewBox="0 0 4 120"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      top: '100%',
+                      transform: 'translateX(-50%)',
+                      zIndex: 1,
+                    }}
+                  >
+                    <line x1="2" y1="0" x2="2" y2="110" stroke="white" strokeWidth="10" />
+                    <polygon points="0,110 4,110 2,120" fill="white" />
+                  </svg>
+                )}
               </div>
-              <p className={`text-center transition-all duration-300 ${activeStep===stage.id?"text-[green]":"text-white"}`}>{stage.title}</p>
             </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-xl h-[500px] p-8 overflow-y-auto " ref={stagesContainer}>
-            <div className="flex flex-wrap gap-3 justify-center items-start">
-              {[
-                {stageId:1,tag:'AI-powered risk prediction'},
-                {stageId:1,tag:  'Heart Health'},
-                  {stageId:1,tag:'Wearable monitoring devices'}, 
-                  {stageId:1,tag: 'Telemedicine & mobile health apps'}, 
-                  {stageId:1,tag: 'Blockchain for health records'},
+          <div className="bg-white rounded-xl h-[580px] p-3.5 flex flex-col gap-1.5 overflow-y-auto" ref={stagesContainer}>
+            {/* Envisioned Health Ecosystem */}
+            <h2 className="text-xl font-bold text-gray-900">Envisioned Health Ecosystem</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                <FontAwesomeIcon icon={faHeartbeat} className="text-blue-700 text-2xl mb-2" />
+                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Antenatal Care</h3>
+                <p className="text-gray-700 text-sm mb-2 text-center">Ensures a safe pregnancy through regular check-ups, screenings, and timely medical guidance for expectant mothers.</p>
+                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                <FontAwesomeIcon icon={faAppleAlt} className="text-blue-700 text-2xl mb-2" />
+                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Folic Acid & Iron Supplementation</h3>
+                <p className="text-gray-700 text-sm mb-2 text-center">Provides essential nutrients to prevent anemia and support brain and spine development in unborn babies.</p>
+                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                <FontAwesomeIcon icon={faShieldAlt} className="text-blue-700 text-2xl mb-2" />
+                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Vaccinations for Pregnant Woman</h3>
+                <p className="text-gray-700 text-sm mb-2 text-center">Protects both mother and child from dangerous infections like tetanus, influenza, and whooping cough during pregnancy.</p>
+                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
+              </div>
+            </div>
 
-                  {stageId:2,tag:'Smart incubators'},
-                  {stageId:2,tag: 'Genomic screening & personalized medicine'},
-                  {stageId:2,tag:'IoT-enabled vaccination tracking'}, 
-                  {stageId:2,tag:'3D printing of medical devices'}, 
-
-                  {stageId:3,tag:'AI-driven malnutrition detection'},
-                  {stageId:3,tag: 'Digital health records'}, 
-                   {stageId:3,tag:'Virtual reality (VR) for early learning'},
-                  {stageId:3,tag:'Point-of-care diagnostics'}, 
-                  
-                   {stageId:4,tag:'AI-driven mental health chatbots'}, 
-                   {stageId:4,tag:'Wearable biosensors'}, 
-                   {stageId:4,tag: 'Blockchain-based health passports'},
-                  {stageId:4,tag:'HPV self-sampling kits'}, 
-
-                  {stageId:5,tag:'AI-driven chronic disease management'},
-                  {stageId:5,tag:'Telemedicine & remote patient monitoring'},
-                   {stageId:5,tag:'CRISPR & gene therapy'},
-                  {stageId:5,tag:'Digital twins for personalized treatment'},
-                  {stageId:5,tag:'Smart drug dispensers & biosensors'}, 
-
-                  {stageId:6,tag:'AI-powered fall detection systems'},
-                  {stageId:6,tag:'Brain-computer interfaces (BCIs)'},
-                  {stageId:6,tag:'Personalized AI caregivers'}, 
-                  {stageId:6,tag: 'Smart prosthetics & exoskeletons'},
-                  {stageId:6,tag:'Wearable ECG & blood pressure monitors'},
-
-
-                  {stageId:7,tag:'AI-powered palliative care decision support'},
-                  {stageId:7,tag:'VR therapy for pain and anxiety'},
-                  {stageId:7,tag:'Blockchain for digital wills & medical directives'},
-                  {stageId:7,tag:'Biodegradable nanotech burial solutions'},
-
-              ].map((tag, index) => (
-                <span
-                  key={index}
-                  className={`px-4 py-2 ${activeStep===tag.stageId?"bg-[green]":""} text-white text-sm font-medium rounded-full whitespace-nowrap transition-colors duration-200 cursor-pointer`}
-                  style={activeStep===tag.stageId ? {} : {backgroundColor: '#0F5757'}}
-                >
-                  {tag?.tag}
-                </span>
-              ))}
+            {/* Enabling Frontier Technologies */}
+            <h2 className="text-xl font-bold text-gray-900 mt-2">Enabling Frontier Technologies</h2>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                <FontAwesomeIcon icon={faUser} className="text-blue-700 text-2xl mb-2" />
+                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">AI-Powered Risk Prediction</h3>
+                <p className="text-gray-700 text-sm mb-2 text-center">Uses maternal health data to identify pregnancy complications early and guide personalized clinical decisions.</p>
+                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                <FontAwesomeIcon icon={faBook} className="text-blue-700 text-2xl mb-2" />
+                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Blockchain for Health Records</h3>
+                <p className="text-gray-700 text-sm mb-2 text-center">Ensures secure, transparent, and tamper-proof maternal health records across healthcare providers and systems.</p>
+                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                <FontAwesomeIcon icon={faMobileAlt} className="text-blue-700 text-2xl mb-2" />
+                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Telemedicine & Mobile Health Apps</h3>
+                <p className="text-gray-700 text-sm mb-2 text-center">Enables remote consultations, symptom tracking, and expert support through accessible mobile and online platforms.</p>
+                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
+              </div>
+              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                <FontAwesomeIcon icon={faHeartbeat} className="text-blue-700 text-2xl mb-2" />
+                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Wearable Monitoring Devices</h3>
+                <p className="text-gray-700 text-sm mb-2 text-center">Continuously tracks heart rate, blood pressure, and fetal activity to detect early signs of distress.</p>
+                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
+              </div>
             </div>
           </div>
         </div>
@@ -467,7 +494,6 @@ function App() {
         <Route path="/stage1" element={<L1page />} />
       </Routes>
     </Router>
-
   )
 }
 
