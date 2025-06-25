@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Navbar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Emblem from '../assets/Emblem_of_India.svg';
+import l1 from  '../assets/l1.svg';
+
 import { faUser, faShieldAlt, faMobileAlt, faHeartbeat, faBook, faAppleAlt } from '@fortawesome/free-solid-svg-icons';
 
 const NitiAayogTheme = () => {
@@ -19,7 +22,7 @@ const NitiAayogTheme = () => {
     <>
       {/* Government Banner */}
       <div className="bg-blue-900 text-white text-center py-2 flex justify-center items-center space-x-4">
-        <img src="../assets/Emblem_of_India.svg" alt="Ashoka Emblem" className="h-8" />
+        <img src={Emblem} alt="Ashoka Emblem" className="h-8" />
         <span className="font-semibold">Government of India | Prenatal and Maternal Care Portal</span>
       </div>
 
@@ -32,7 +35,7 @@ const NitiAayogTheme = () => {
             {/* <img src="/path-to-ministry-logo.png" alt="Ministry Logo" className="h-16 mx-auto mb-4" /> */}
             <h1 className="text-3xl md:text-4xl font-bold text-blue-900">Prenatal and Maternal Care</h1>
             <p className="text-gray-600 mt-2">Empowering maternal health from conception to childbirth</p>
-            <img src="../assets/l1.svg" alt="Decorative" className="absolute -top-6 right-0 h-24 w-auto md:h-32 md:w-auto" style={{zIndex: 1}} />
+            <img src={l1} alt="Decorative" className="absolute -top-6 right-0 h-24 w-auto md:h-32 md:w-auto" style={{zIndex: 1}} />
           </div>
 
           {/* Envisioned Health Ecosystem */}
