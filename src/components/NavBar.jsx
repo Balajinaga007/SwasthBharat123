@@ -1,160 +1,172 @@
-
-
-
-// import { usePathname } from 'next/navigation'
-import { useLocation } from 'react-router-dom';
-import React, { Suspense, useState } from 'react'
-// import Button from './Button'
-import Hamburger from '../svg/Hamurger';
-import CrossIcon from '../svg/CrossIcon';
-import Logo from '../svg/Logo';
-import Button from './Button';
+"use client"
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
-  return (
+  const location = useLocation();
+  const [fontSize, setFontSize] = useState('medium');
 
-    <NavBarComponent />)
+  const handleFontDecrease = () => setFontSize('small');
+  const handleFontIncrease = () => setFontSize('large');
 
-
-}
-export default Navbar
-const NavBarComponent = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleDrawer = () => {
-    setIsOpen(!isOpen);
-
+  const fontSizeMap = {
+    small: '14px',
+    medium: '16px',
+    large: '20px',
   };
-  const pathname = useLocation()
-  // fixed top-0 left-0 right-0 z-50 bg-ta-white shadow-lg border-b border-ta-beige
+
+  // Map route paths to nav link keys
+  const navLinks = [
+    { to: '/', label: 'Home', match: /^\/$/ },
+    { to: '/about', label: 'About', match: /^\/about/ },
+    { to: '/stage1', label: 'Life Stages', match: /^\/stage1/ },
+    { to: '/knowledge-center', label: 'Knowledge Center', match: /^\/knowledge-center/ },
+    { to: '/data', label: 'Data', match: /^\/data/ },
+    { to: '/help', label: 'Help', match: /^\/help/ },
+  ];
+
   return (
-    <>
-      <div className='fixed top-0 left-0 right-0 z-50 bg-app-brand2 shadow-lg w-full flex h-[4rem] hidden md:flex items-center justify-between px-[3.875rem]'>
-        <a href="/" className='flex gap-[0.875rem] items-center'>
-          <Logo />
-          <p className='text-32-scale-lg text-app-brand font-[500] leading-[1.5rem]'>SwasthBharath</p>
-        </a>
+    <nav className="navbar">
+      <style>
+        {`
+          .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #003087, #0055A4);
+            padding: 1rem 2rem;
+            color: white;
+            font-family: 'Work Sans', sans-serif;
+          }
+          .logo {
+            display: flex;
+            align-items: center;
+          }
+          .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color:#2D8686;
+            margin-left: 0.5rem;
+          }
+          .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+          }
+          .nav-links li {
+            margin: 0 1rem;
+          }
+          .nav-links a {
+            font-size:16px;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.2s;
+          }
+          .nav-links a:hover {
+            color: #FFF9C4; /* light yellow */
+          }
+          .nav-links a::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 3px;
+            background: #FFD600; /* yellow */
+            opacity: 0;
+            transform: scaleX(0);
+            transition: opacity 0.2s, transform 0.2s;
+          }
+          .nav-links a:hover::after {
+            opacity: 1;
+            transform: scaleX(1);
+          }
+          .nav-links a.active::after {
+            opacity: 1;
+            transform: scaleX(1);
+          }
+          .nav-options {
+            display: flex;
+            align-items: center;
+          }
+          .font-size button {
+            background: none;
+            border: none;
+            color: white;
+            margin: 0 0.5rem;
+            cursor: pointer;
+          }
+          .language {
+            background: none;
+            border: none;
+            color: white;
+            margin-left: 1rem;
+          }
+          .search-btn, .login-btn, .register-btn {
+            background:rgb(51, 88, 155);
+            color: white;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.5rem 1.5rem;
+            margin-left: 1rem;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1rem;
+            gap: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.2s;
+          }
+          .search-btn:hover, .login-btn:hover, .register-btn:hover {
+            background: #223A60;
+          }
+          .languages{
+            background:rgb(51, 88, 155);
+            }
+        `}
+      </style>
+      <div className="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="34" fill="none" viewBox="0 0 40 34"><path fill="#2D8686" d="m17.836 33.154-14.117-13.1c-.328-.303-.64-.63-.93-.963h6.797a4.38 4.38 0 0 0 4.039-2.68l.82-1.956 3.852 8.503a1.85 1.85 0 0 0 1.672 1.095 1.9 1.9 0 0 0 1.718-1.033L25 16.427l.133.264a4.38 4.38 0 0 0 3.914 2.408h8.164a12 12 0 0 1-.93.962L22.164 33.154A3.18 3.18 0 0 1 20 34a3.18 3.18 0 0 1-2.164-.846m21.516-17.79H29.039a.64.64 0 0 1-.562-.342l-1.813-3.595a1.89 1.89 0 0 0-1.68-1.033c-.71 0-1.359.396-1.68 1.033l-3.234 6.43-3.984-8.846a1.87 1.87 0 0 0-1.734-1.094 1.88 1.88 0 0 0-1.704 1.149l-2.484 5.925a.62.62 0 0 1-.578.38H1.25c-.203 0-.39.031-.57.086A11.6 11.6 0 0 1 0 11.55v-.45C0 5.671 3.945 1.043 9.328.15c3.563-.59 7.188.567 9.735 3.099l.937.932.938-.932A11.21 11.21 0 0 1 30.672.15C36.055 1.044 40 5.672 40 11.101v.45c0 1.312-.219 2.601-.648 3.812"></path></svg>
+        <span className="brand" style={{ fontSize: '1.5rem' }}>SwasthBharath</span>
+      </div>
+      
+      <ul className="nav-links" style={{ fontSize: fontSizeMap[fontSize] }}>
+        {navLinks.map(link => (
+          <li key={link.label}>
+            <Link
+              to={link.to}
+              className={link.match.test(location.pathname) ? 'active' : ''}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <div className="nav-options">
+        <div className="font-size">
+          <button onClick={handleFontDecrease}>A-</button>
+          <button onClick={handleFontIncrease}>A+</button>
+        </div>
+        <select className="language">
+          <option value="english">English</option>
+          <option value="hindi">Hindi</option>
+        </select>
        
-        <div className='flex gap-[2rem] items-center text-ta-dark-brown'>
-          <a href="/" className={`${pathname === "/" ? "border-b-[0.125rem] border-app-brand text-app-brand font-[700]" : "text-white hover:text-app-brand"} py-[0.188rem] text-18-scale-lg leading-[100%]`}>
-            Home
-          </a>
-          <a href="/about" className={`${pathname === "/about" ? "border-b-[0.125rem] border-app-brand text-app-brand font-[700]" : "text-white hover:text-app-brand"} py-[0.188rem] text-18-scale-lg leading-[100%]`}>
-            About
-          </a>
-          <a href="/" className={`${pathname === "stages" ? "border-b-[0.125rem] border-app-brand text-app-brand font-[700]" : "text-white hover:text-app-brand"} py-[0.188rem] text-18-scale-lg leading-[100%]`}>
-            Life Stages
-          </a>
-          <a href="/" className={`${pathname === "/knowledge" ? "border-b-[0.125rem] border-app-brand text-app-brand font-[700]" : "text-white hover:text-app-brand"} py-[0.188rem] text-18-scale-lg leading-[100%]`}>
-            Knowledge Center
-          </a>
-          <a href="/" className={`${pathname === "/data" ? "border-b-[0.125rem] border-app-brand text-app-brand font-[700]" : "text-white hover:text-app-brand"} py-[0.188rem] text-18-scale-lg leading-[100%]`}>
-            Data
-          </a>
-          <a href="/" className={`${pathname === "/help" ? "border-b-[0.125rem] border-app-brand text-app-brand font-[700]" : "text-white hover:text-app-brand"} py-[0.188rem] text-18-scale-lg leading-[100%]`}>
-            Help
-          </a>
-        </div>
-
-        <div className='gap-[0.8125rem] flex'>
-          <Button label="Login" className="text-white bg-app-brand2 px-[1.5rem] h-[2.5rem] !font-[400]" />
-          <Button label="Register" className="text-white bg-app-brand2 w-[7.125rem] !h-[2.5rem] !font-[400] rounded-[1.44rem] flex items-center justify-center" />
-        </div>
+        <button className="search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="white" strokeWidth="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
+        </button>
+        <button className="login-btn" aria-label="Login">
+          Login
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" stroke="white" strokeWidth="2"/><path d="M4 20c0-2.21 3.582-4 8-4s8 1.79 8 4" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
+        </button>
+     
+        <button className="register-btn" aria-label="Register">Register</button>
       </div>
-      <div className='flex px-16-scale items-center h-[4.88rem] justify-between bg-nav-bg md:hidden '>
-        {isOpen && (
-          <div
-            className="fixed inset-0 bg-black opacity-50 z-[999]"
-            onClick={toggleDrawer}
-          ></div>
-        )}
-        {/* Drawer */}
-        <div
-          className={`fixed top-0 h-full z-[999] left-0 w-[90%]  md:w-[21rem] rounded-tr-[1rem] rounded-br-[1rem] transition-transform duration-300 ${isOpen ? "translate-x-0 " : "-translate-x-full "
-            }`}
-        >
-          {/* Close Button */}
-          <nav className="h-full bg-white py-[1.25rem] px-[1.5rem]">
-            <div className="flex flex-col h-full justify-between">
-              <div>
-                <div className="border-b-[0.0635rem] pb-[1.25rem] flex justify-between">
-                  <a href="/" className='flex gap-[0.625rem]   !items-center'>
-                    <Logo width="25px" height="25px" />
-                    <p className='text-20-scale text-app-brand font-[700] leading-[1.5rem]'>HealthHub</p>
-                  </a>
-                  <button onClick={toggleDrawer}>
-                    <CrossIcon color="black" width="14" height="14" />
-                  </button>
-                </div>
-                <div className=' h-[500px] flex flex-col justify-between'>
-                  <ul className="text-18-scale md:18-scale-lg font-[500] pt-[0.5rem]">
+    </nav>
+  );
+};
 
-
-
-                    <li>
-                      <a href="/" className={`block py-2 px-4 ${pathname === "/"?"text-app-brand":"text-black"}`} onClick={toggleDrawer}>
-                        Home
-                      </a>
-                    </li>
-                    {/* <li>
-                  <a href="/science" className="block py-2 px-4" onClick={toggleDrawer}>
-                    The Science
-                  </a>
-                </li> */}
-                    <li>
-                      <a href="/about" className={`block py-2 px-4 ${pathname === "/about"?"text-app-brand":"text-black"}`} onClick={toggleDrawer}>
-                        About
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/" className={`block py-2 px-4 ${pathname==="stages"?"text-app-brand":"text-black"}`} onClick={toggleDrawer}>
-                        Life Stages
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/" className="block py-2 px-4" onClick={toggleDrawer}>
-                        Knowledge Center
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/" className="block py-2 px-4" onClick={toggleDrawer}>
-                        Data
-                      </a>
-                    </li>
-                    <li>
-                      <a href="/" className="block py-2 px-4" onClick={toggleDrawer}>
-                        Help
-                      </a>
-                    </li>
-
-                  </ul>
-                  <div className='flex  flex-col justify-between items-center gap-[20px]'>
-                    <button label="Login" className=" text-app-brand !w-full h-[40px]  font-[600]  " />
-                    <button label="Register" className=" text-white bg-app-brand !w-full !h-[40px] font-[500] rounded-[20.188rem] flex items-center justify-center  " />
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-
-        {/* Hamburger Menu Button */}
-        <div className=" w-full h-[78px] bg-nav-bg flex items-center  justify-between z-[900] md:hidden">
-
-          <a href="/" className='flex gap-[10px]   !items-center'>
-            <Logo />
-            <p className='text-32-scale text-app-brand font-[700] leading-[75%]'>HealthHub</p>
-          </a>
-          <button type="button" onClick={toggleDrawer}>
-            <Hamburger />
-          </button>
-
-
-        </div>
-      </div>
-
-    </>
-  )
-}
-
-
+export default Navbar;

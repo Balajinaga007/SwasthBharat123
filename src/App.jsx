@@ -9,12 +9,15 @@ import Stage5 from './svg/Stage5'
 import Stage6 from './svg/Stage6'
 import Stage7 from './svg/Stage7'
 import Navbar from './components/NavBar'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, useNavigate, Routes, Route } from 'react-router-dom'
+import L1page from './pages/l1page'
 import Footer from './components/Footer'
+
+// import HealthEcosystemTimeline from './lifestages'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function App() {
+function MainContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const stagesContainer=useRef()
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
@@ -24,6 +27,8 @@ function App() {
   const navRef = useRef()
   const imageRefs = useRef([])
   const currentSlide = useRef(0)
+  const navigate = useNavigate()
+
 useEffect(()=>{
 if(activeStep){
   stagesContainer?.current?.scrollIntoView({
@@ -228,7 +233,6 @@ const stageInfo=[
   
 ]
   return (
-    <Router>
     <div className="min-h-screen bg-ta-cream">
       {/* Navigation */}
      <Navbar/>
@@ -363,18 +367,23 @@ const stageInfo=[
           {/* 7 Circles */}
           <div className="flex justify-between items-start mb-8" >
             {stageInfo.map((stage, index) => (
-            <div  key={index} className='w-28  flex flex-col gap-2 cursor-pointer '
-            onClick={()=>setActiveStep(stage?.id)}>
+            <div  
+              key={index} 
+              className='w-28 flex flex-col gap-2 cursor-pointer transition-all duration-300 hover:scale-110'
+              onMouseEnter={() => setActiveStep(stage?.id)}
+              onClick={() => {
+                if (stage?.id === 1) {
+                  navigate('/stage1');
+                }
+              }}
+            >
               <div
-           
-               
-                className={`w-28 h-28  rounded-full ${activeStep===stage.id?"text-[green] bg-[#9AD9B1]":"text-ta-dark-brown bg-ta-beige"} flex items-center justify-center `}
+                className={`w-28 h-28 rounded-full ${activeStep===stage.id?"text-[green] bg-[#9AD9B1]":"text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
               >
-
-              {stage.icon?.()}
+                {stage.icon?.()}
               </div>
-              <p className={`text-center ${activeStep===stage.id?"text-[green]":"text-white"}`}>{stage.title}</p>
-              </div>
+              <p className={`text-center transition-all duration-300 ${activeStep===stage.id?"text-[green]":"text-white"}`}>{stage.title}</p>
+            </div>
             ))}
           </div>
 
@@ -433,6 +442,7 @@ const stageInfo=[
           </div>
         </div>
       </section>
+      {/* <HealthEcosystemTimeline /> */}
 
       {/* Footer */}
       {/* <footer className="py-16 px-4 bg-ta-dark-brown text-center">
@@ -446,7 +456,18 @@ const stageInfo=[
       </footer> */}
       <Footer/>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainContent />} />
+        <Route path="/stage1" element={<L1page />} />
+      </Routes>
     </Router>
+
   )
 }
 

@@ -31,7 +31,11 @@ export default {
         //app
         "app-brand":"#2D8686",
         'white': '#FFFFFF',
-        "app-brand2":"#162F6A"
+        "app-brand2":"#162F6A",
+        saffron: '#FF9933',
+        blue: {
+          900: '#003087',
+        },
       }
     },
     // padding: {
