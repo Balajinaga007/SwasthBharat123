@@ -19,7 +19,7 @@ const NitiAayogTheme = () => {
     <>
       {/* Government Banner */}
       <div className="bg-blue-900 text-white text-center py-2 flex justify-center items-center space-x-4">
-        <img src="src/assets/Emblem_of_India.svg" alt="Ashoka Emblem" className="h-8" />
+        <img src="/src/assets/Emblem_of_India.svg" alt="Ashoka Emblem" className="h-8" />
         <span className="font-semibold">Government of India | Prenatal and Maternal Care Portal</span>
       </div>
 
