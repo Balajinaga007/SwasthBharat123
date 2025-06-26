@@ -36,14 +36,14 @@ const WhyImportantSection = () => {
   return (
     <section className="  rounded-xl shadow-sm max-w-5xl mx-auto my-10 font-work-sans" style={{ fontFamily: 'Work Sans, sans-serif' }}>
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-        Why It's Important?
+        Why it's important?
       </h2>
 
       <div className="grid  gap-6 sm:grid-cols-2">
         {benefits.map((item, index) => (
           <div
             key={index}
-            className="p-6  rounded-xl shadow hover:shadow-lg transition duration-300"
+            className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition duration-300"
           >
             {item.icon}
             <h3 className="text-xl font-semibold text-blue-700 mb-2">{item.title}</h3>
