@@ -15,6 +15,8 @@ import Footer from './components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faShieldAlt, faMobileAlt, faHeartbeat, faBook, faAppleAlt } from '@fortawesome/free-solid-svg-icons'
 import l1 from './assets/l1.svg'
+import WhyImportantSection from "./components/WhyImportantSection";
+import HeroSection from './components/slider'
 
 // import HealthEcosystemTimeline from './lifestages'
 
@@ -297,12 +299,13 @@ const stageInfo=[
       </section>
 
       {/* Hero Section with Slideshow */}
-      <section
+      <HeroSection/>
+      {/* <section
         ref={heroRef}
         className="relative h-[300vh] bg-ta-cream"
       >
         <div className="slideshow-container sticky top-0 h-screen overflow-hidden">
-          {/* Full Screen Slideshow Background */}
+          
           {[1, 2, 3].map((slideNumber, index) => (
             <img
               key={slideNumber}
@@ -314,7 +317,7 @@ const stageInfo=[
           ))}
 
         </div>
-      </section>
+      </section> */}
 
       {/* Typewriter Section */}
       <section className="min-h-[350px] px-4 bg-ta-white flex items-center justify-center">
@@ -353,17 +356,18 @@ const stageInfo=[
       </section>
 
       {/* Placeholder Section */}
-      <section className="py-10 px-4 bg-ta-white flex items-center justify-center">
+      <WhyImportantSection/>
+      {/* <section className="py-10 px-4 bg-ta-white flex items-center justify-center">
         <div className="max-w-4xl mx-auto text-center">
           
           <p className="text-2xl text-ta-brown max-w-4xl mx-auto font-light leading-relaxed">
           "Enjoy a better quality of life—stay active, independent, and connected with the world around you, even in your later years."
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Tag Cloud Section */}
-      <section className="w-full py-8 px-4" style={{backgroundColor: '#29136C'}}>
+      <section className="w-full py-8 px-4 font-work-sans" style={{backgroundColor: '#29136C', fontFamily: 'Work Sans, sans-serif'}}>
       <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-light text-ta-white mb-6">
