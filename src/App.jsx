@@ -370,10 +370,10 @@ const stageInfo=[
       <section className="w-full py-8 px-4 font-work-sans" style={{backgroundColor: '#29136C', fontFamily: 'Work Sans, sans-serif'}}>
       <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-light text-ta-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-light text-ta-white mb-6">
             Technology for Healthspan
           </h2>
-          <p className="text-xl text-white max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-xl text-white max-w-1xl mx-auto  leading-relaxed">
             We are showcasing the frontier technologies that can help us bridge this gap for every life stage. 
           </p>
         </div>
