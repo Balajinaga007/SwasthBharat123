@@ -320,31 +320,29 @@ const stageInfo=[
       </section> */}
 
       {/* Typewriter Section */}
-      <section className="min-h-[350px] px-4 bg-ta-white flex items-center justify-center">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="relative">
-            <p
-              ref={typewriterRef}
-              className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-ta-dark-brown text-left max-w-none break-words"
-              style={{
-                fontFamily: 'Kalam, cursive',
-                fontWeight: '400',
-                lineHeight: '1.8',
-                wordWrap: 'break-word',
-                whiteSpace: 'normal',
-                overflowWrap: 'break-word'
-              }}
-            >
-              Lifespan measures quantity; healthspan measures quality. Lifespan counts total years from birth to death, healthspan represents the period spent in good health, free from serious disease and disability.
-            </p>
-            <span
-              id="typewriter-cursor"
-              className="inline-block w-0.5 h-8 bg-ta-dark-brown ml-1 animate-pulse"
-              style={{ display: 'none' }}
-            />
-          </div>
-        </div>
-      </section>
+      <section className="py-0 my-0 px-4 bg-ta-white flex items-center justify-center">
+  <div className="max-w-6xl mx-auto text-center m-0 p-0">
+    <div className="relative m-0 p-0">
+      <p
+        ref={typewriterRef}
+        className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-ta-dark-brown text-left max-w-none break-words m-0 p-0"
+        style={{
+          fontFamily: 'Kalam, cursive',
+          fontWeight: '400',
+          lineHeight: '1.8',
+          wordWrap: 'break-word',
+          whiteSpace: 'normal',
+          overflowWrap: 'break-word',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        Lifespan measures quantity; healthspan measures quality. Lifespan counts total years from birth to death, healthspan represents the period spent in good health, free from serious disease and disability.
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* Healthspan Infographic Section */}
       <section className="w-full">
@@ -354,6 +352,7 @@ const stageInfo=[
           className="w-full h-auto object-cover"
         />
       </section>
+
 
       {/* Placeholder Section */}
       <WhyImportantSection/>
@@ -427,7 +426,7 @@ const stageInfo=[
             ))}
           </div>
 
-          <div className="bg-white rounded-xl h-[580px] p-3.5 flex flex-col gap-1.5 overflow-y-auto" ref={stagesContainer}>
+          <div className="bg-white rounded-xl h-[600px] p-3.5 flex flex-col gap-1 overflow-y-auto" ref={stagesContainer}>
             {/* Envisioned Health Ecosystem */}
             <h2 className="text-xl font-bold text-gray-900">Envisioned Health Ecosystem</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -452,7 +451,7 @@ const stageInfo=[
             </div>
 
             {/* Enabling Frontier Technologies */}
-            <h2 className="text-xl font-bold text-gray-900 mt-2">Enabling Frontier Technologies</h2>
+            <h2 className="text-xl pt-7 font-bold text-gray-900 mt-2">Enabling Frontier Technologies</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
                 <FontAwesomeIcon icon={faUser} className="text-blue-700 text-2xl mb-2" />
