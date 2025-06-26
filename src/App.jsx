@@ -245,7 +245,7 @@ const stageInfo=[
       {/* Main Title with extra spacing from navigation */}
       <div className="w-full bg-ta-cream text-center pt-10 pb-4">
         <h1 className="text-4xl md:text-6xl font-light mb-0 text-ta-dark-brown tracking-wide">
-          Increase your Healthspan with LifeSpan
+          Increase your Healthspan with Lifespan
         </h1>
       </div>
       <section className="bg-ta-cream text-center relative overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center">
