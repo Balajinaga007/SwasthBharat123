@@ -241,9 +241,9 @@ const stageInfo=[
      <Navbar/>
 
       {/* Main Title with extra spacing from navigation */}
-      <div className="w-full bg-ta-cream text-center pt-24 pb-4">
-        <h1 className="text-5xl md:text-7xl font-light mb-0 text-ta-dark-brown tracking-wide">
-          Lifespan & Healthspan
+      <div className="w-full bg-ta-cream text-center pt-10 pb-4">
+        <h1 className="text-4xl md:text-6xl font-light mb-0 text-ta-dark-brown tracking-wide">
+          Increase your Healthspan with LifeSpan
         </h1>
       </div>
       <section className="bg-ta-cream text-center relative overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center">
@@ -256,7 +256,7 @@ const stageInfo=[
               alt="Hero Background Left"
               className="w-full h-full object-contain object-center opacity-30 pointer-events-none select-none"
             />
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
               <div className="text-2xl md:text-3xl font-bold text-ta-dark-brown text-center drop-shadow-sm">
                 Lifespan
                 <div className="text-base md:text-lg font-medium mt-1 text-ta-dark-brown opacity-90">
@@ -272,7 +272,7 @@ const stageInfo=[
               alt="Hero Background Right"
               className="w-full h-full object-contain object-center opacity-30 pointer-events-none select-none"
             />
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
               <div className="text-2xl md:text-3xl font-bold text-ta-dark-brown text-center drop-shadow-sm">
                 Healthspan
                 <div className="text-base md:text-lg font-medium mt-1 text-ta-dark-brown opacity-90">
@@ -285,7 +285,7 @@ const stageInfo=[
       </section>
 
       {/* Lifespan in India Section */}
-      <section className="py-24 px-4 bg-ta-white flex items-center justify-center">
+      <section className="py-10 px-4 bg-ta-white flex items-center justify-center">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-light text-ta-dark-brown mb-6">
             Lifespan in India
@@ -317,7 +317,7 @@ const stageInfo=[
       </section>
 
       {/* Typewriter Section */}
-      <section className="min-h-[600px] px-4 bg-ta-white flex items-center justify-center">
+      <section className="min-h-[350px] px-4 bg-ta-white flex items-center justify-center">
         <div className="max-w-6xl mx-auto text-center">
           <div className="relative">
             <p
@@ -353,19 +353,28 @@ const stageInfo=[
       </section>
 
       {/* Placeholder Section */}
-      <section className="py-24 px-4 bg-ta-white flex items-center justify-center">
+      <section className="py-10 px-4 bg-ta-white flex items-center justify-center">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-light text-ta-dark-brown mb-6">
-            Technology for Healthspan
-          </h2>
-          <p className="text-xl text-ta-brown max-w-2xl mx-auto font-light leading-relaxed">
-            We are showcasing the frontier technologies that can help us bridge this gap for every life stage. 
+          
+          <p className="text-2xl text-ta-brown max-w-4xl mx-auto font-light leading-relaxed">
+          "Enjoy a better quality of life—stay active, independent, and connected with the world around you, even in your later years."
           </p>
         </div>
       </section>
 
       {/* Tag Cloud Section */}
-      <section className="w-full py-16 px-4" style={{backgroundColor: '#29136C'}}>
+      <section className="w-full py-8 px-4" style={{backgroundColor: '#29136C'}}>
+      <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-light text-ta-white mb-6">
+            Technology for Healthspan
+          </h2>
+          <p className="text-xl text-white max-w-2xl mx-auto font-light leading-relaxed">
+            We are showcasing the frontier technologies that can help us bridge this gap for every life stage. 
+          </p>
+        </div>
+      </section>
+
         <div className="max-w-6xl mx-auto relative">
           {/* 7 Circles */}
           <div className="flex justify-between items-start mb-8 relative">
