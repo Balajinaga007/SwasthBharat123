@@ -194,9 +194,17 @@ const Navbar = () => {
 
             {link.label === "Life Stages" && (
               <div className="dropdown">
-                {[1, 2, 3, 4, 5, 6, 7].map((stage) => (
-                  <Link key={stage} to={`/stage${stage}`}>
-                    Stage {stage}
+                {[
+                  "Prenatal and Maternal Care",
+                  "Neonatal & Infant Care",
+                  "Early Childhood",
+                  "School Age & Adolescence",
+                  "Adulthood",
+                  "Elderly Care",
+                  "End of the Life"
+                ].map((label, idx) => (
+                  <Link key={label} to={`/stage${idx + 1}`}>
+                    {label}
                   </Link>
                 ))}
               </div>
