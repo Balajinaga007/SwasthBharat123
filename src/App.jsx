@@ -452,14 +452,14 @@ const stageInfo=[
           {/* Left image and overlay */}
           <div className="relative w-full md:w-1/2 h-64 md:h-[600px] flex items-center justify-center">
             <img
-              src="/images/hero1.png"
+              src="/images/hero1.jpg"
               alt="Hero Background Left"
-              className="w-full h-full object-contain object-center opacity-30 pointer-events-none select-none"
+              className="w-full h-full object-cover object-center opacity-40 pointer-events-none select-none"
             />
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
               <div className="text-2xl md:text-3xl font-bold text-ta-dark-brown text-center drop-shadow-sm">
                 Lifespan
-                <div className="text-base md:text-lg font-medium mt-1 text-ta-dark-brown opacity-90">
+                <div className="text-base md:text-lg font-medium mt-0 text-ta-dark-brown opacity-90">
                   Total years lived from birth to death.
                 </div>
               </div>
@@ -468,14 +468,14 @@ const stageInfo=[
           {/* Right image and overlay */}
           <div className="relative w-full md:w-1/2 h-64 md:h-[600px] flex items-center justify-center">
             <img
-              src="/images/hero2.png"
+              src="/images/hero2.jpg"
               alt="Hero Background Right"
-              className="w-full h-full object-contain object-center opacity-30 pointer-events-none select-none"
+              className="w-full h-full object-cover object-center opacity-40 pointer-events-none select-none"
             />
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
               <div className="text-2xl md:text-3xl font-bold text-ta-dark-brown text-center drop-shadow-sm">
                 Healthspan
-                <div className="text-base md:text-lg font-medium mt-1 text-ta-dark-brown opacity-90">
+                <div className="text-base md:text-lg font-medium mt-0 text-ta-dark-brown opacity-90">
                   Years lived in good health.
                 </div>
               </div>
@@ -545,7 +545,7 @@ const stageInfo=[
       {/* Healthspan Infographic Section */}
       <section className="w-full">
         <img
-          src="/images/slide6.png"
+          src="/images/slide6.jpg"
           alt="SwasthBharat Health Initiative"
           className="w-full h-auto object-cover"
         />

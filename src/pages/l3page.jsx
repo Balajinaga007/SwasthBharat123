@@ -33,9 +33,9 @@ const Ls3 = () => {
           {/* Header Section */}
           <div className="text-center mb-10 relative">
             {/* <img src="/path-to-ministry-logo.png" alt="Ministry Logo" className="h-16 mx-auto mb-4" /> */}
-            <h1 className="text-3xl md:text-4xl font-bold text-blue-900"></h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-blue-900">Early Childhood</h1>
             <p className="text-gray-600 mt-2">Empowering maternal health from conception to childbirth</p>
-            <img src={l1} alt="Decorative" className="absolute -top-6 right-0 h-24 w-auto md:h-32 md:w-auto" style={{zIndex: 1}} />
+            {/* <img src={l1} alt="Decorative" className="absolute -top-6 right-0 h-24 w-auto md:h-32 md:w-auto" style={{zIndex: 1}} /> */}
           </div>
 
           {/* Envisioned Health Ecosystem */}
