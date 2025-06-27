@@ -23,7 +23,7 @@ const Ls7 = () => {
       {/* Government Banner */}
       <div className="bg-blue-900 text-white text-center py-2 flex justify-center items-center space-x-4">
         <img src={Emblem} alt="Ashoka Emblem" className="h-8" />
-        <span className="font-semibold">Government of India | Prenatal and Maternal Care Portal</span>
+        <span className="font-semibold">Government of India | SwasthBharath</span>
       </div>
 
       <Navbar />

@@ -3,7 +3,7 @@ import Navbar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Emblem from '../assets/Emblem_of_India.svg';
-import l1 from '../assets/l1.svg';
+import l2 from '../assets/l2.svg';
 import { faBaby, faUtensils, faSyringe, faFileMedical, faMicrochip, faDna, faSatellite, faCube } from '@fortawesome/free-solid-svg-icons';
 
 const Ls2 = () => {
@@ -22,7 +22,7 @@ const Ls2 = () => {
       {/* Government Banner */}
       <div className="bg-blue-900 text-white text-center py-2 flex justify-center items-center space-x-4">
         <img src={Emblem} alt="Ashoka Emblem" className="h-8" />
-        <span className="font-semibold">Government of India | Neonatal & Infant Care Portal</span>
+        <span className="font-semibold">Government of India | SwasthBharath</span>
       </div>
 
       <Navbar />
@@ -34,7 +34,7 @@ const Ls2 = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-blue-900">Neonatal & Infant Care <span className="text-2xl md:text-2xl font-bold text-blue-900">(0-1 year)</span></h1>
            
             <p className="text-gray-600 mt-2">Building a Strong Foundation for Life</p>
-            {/* <img src={l1} alt="Decorative" className="absolute -top-6 right-0 h-24 w-auto md:h-32 md:w-auto" style={{ zIndex: 1 }} /> */}
+         <img src={l2} alt="Decorative" className="absolute -top-6 right-0 h-24 w-auto md:h-32 md:w-auto" style={{ zIndex: 1 }} /> 
           </div>
 
           {/* Envisioned Health Ecosystem */}
