@@ -7,15 +7,15 @@ import Emblem from '../assets/Emblem_of_India.svg';
 import { faBaby, faUtensils, faSyringe, faFileMedical, faMicrochip, faDna, faSatellite, faCube } from '@fortawesome/free-solid-svg-icons';
 
 const Ls2 = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+  // const handleLogin = () => {
+  //   setIsLoggedIn(true);
+  // };
 
-  const handleRegister = () => {
-    alert('Registration process started!');
-  };
+  // const handleRegister = () => {
+  //   alert('Registration process started!');
+  // };
 
   return (
     <>
