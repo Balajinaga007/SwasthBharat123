@@ -31,7 +31,7 @@ export default function HeroSection() {
             <img
               key={slideNumber}
               ref={(el) => (imageRefs.current[index] = el)}
-              src={`/images/slide${slideNumber}.png`}
+              src={`/images/Slide${slideNumber}.jpg`}
               alt={`Slide ${slideNumber}`}
               className="absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out"
               style={{

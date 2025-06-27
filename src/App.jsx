@@ -11,6 +11,12 @@ import Stage7 from './svg/Stage7'
 import Navbar from './components/NavBar'
 import { BrowserRouter as Router, useNavigate, Routes, Route } from 'react-router-dom'
 import L1page from './pages/l1page'
+import Ls2 from './pages/l2page'
+import Ls3 from './pages/l3page'
+import Ls4 from './pages/l4page'
+import Ls5 from './pages/l5page'
+import Ls6 from './pages/l6page'
+import Ls7 from './pages/l7page'
 import Footer from './components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faShieldAlt, faMobileAlt, faHeartbeat, faBook, faAppleAlt } from '@fortawesome/free-solid-svg-icons'
@@ -21,6 +27,198 @@ import HeroSection from './components/slider'
 // import HealthEcosystemTimeline from './lifestages'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const stageEcosystem = {
+  1: [
+    {
+      icon: faAppleAlt,
+      title: "Folic acid & iron supplementation",
+      desc: "Provides essential nutrients to prevent anemia and support brain and spine development in unborn babies."
+    },
+    {
+      icon: faShieldAlt,
+      title: "Vaccinations for pregnant women",
+      desc: "Protects both mother and child from dangerous infections during pregnancy."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Antenatal care",
+      desc: "Ensures a safe pregnancy through regular check-ups, screenings, and timely medical guidance."
+    }
+  ],
+  2: [
+    {
+      icon: faUser,
+      title: "Growth monitoring & early developmental screening",
+      desc: "Track children's growth and development to identify and address issues early for better health outcomes."
+    },
+    {
+      icon: faAppleAlt,
+      title: "Nutrition support",
+      desc: "Provide essential nutrients to support healthy growth and prevent malnutrition in children."
+    },
+    {
+      icon: faShieldAlt,
+      title: "Immunization",
+      desc: "Protect children from preventable diseases through timely vaccinations."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Newborn screening",
+      desc: "Early detection of health conditions in newborns for prompt intervention and care."
+    },
+    {
+      icon: faBook,
+      title: "Birth registration & vital statistics",
+      desc: "Ensure every child is registered at birth and vital statistics are recorded for better planning and services."
+    }
+  ],
+  3: [
+    {
+      icon: faUser,
+      title: "Preventive health check-ups",
+      desc: "Regular health check-ups to detect and address health issues early in childhood."
+    },
+    {
+      icon: faAppleAlt,
+      title: "Oral health programs",
+      desc: "Promote oral hygiene and prevent dental problems in children."
+    },
+    {
+      icon: faBook,
+      title: "Early childhood education & stimulation",
+      desc: "Support cognitive and emotional development through early learning programs."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Malnutrition prevention & treatment",
+      desc: "Identify and treat malnutrition to ensure healthy growth."
+    },
+    {
+      icon: faShieldAlt,
+      title: "Routine immunization",
+      desc: "Protect children from common infectious diseases through scheduled vaccinations."
+    }
+  ],
+  4: [
+    {
+      icon: faShieldAlt,
+      title: "Substance abuse prevention",
+      desc: "Educate and support adolescents to prevent substance abuse."
+    },
+    {
+      icon: faUser,
+      title: "Adolescent reproductive health",
+      desc: "Provide information and services for safe and healthy adolescence."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Mental health support",
+      desc: "Offer mental health resources and support for adolescents."
+    },
+    {
+      icon: faAppleAlt,
+      title: "Menstrual health & hygiene",
+      desc: "Promote menstrual hygiene and health education."
+    },
+    {
+      icon: faBook,
+      title: "School health programs",
+      desc: "Implement health programs in schools for overall well-being."
+    }
+  ],
+  5: [
+    {
+      icon: faShieldAlt,
+      title: "Vaccinations (Influenza, hepatitis B, COVID-19 boosters)",
+      desc: "Protect adults from infectious diseases with recommended vaccines."
+    },
+    {
+      icon: faUser,
+      title: "Preventive screenings",
+      desc: "Regular screenings to detect diseases early and improve outcomes."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Mental health services",
+      desc: "Access to mental health care and support for adults."
+    },
+    {
+      icon: faAppleAlt,
+      title: "Occupational health & safety",
+      desc: "Promote safe and healthy workplaces."
+    },
+    {
+      icon: faBook,
+      title: "Lifestyle disease prevention",
+      desc: "Encourage healthy habits to prevent lifestyle-related diseases."
+    },
+    {
+      icon: faShieldAlt,
+      title: "Infectious disease control",
+      desc: "Monitor and control the spread of infectious diseases."
+    },
+    {
+      icon: faUser,
+      title: "Maternal health services",
+      desc: "Support maternal health for women of reproductive age."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Reproductive & sexual health services",
+      desc: "Provide comprehensive reproductive and sexual health care."
+    }
+  ],
+  6: [
+    {
+      icon: faUser,
+      title: "Social support programs",
+      desc: "Offer social support to improve quality of life for the elderly."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Palliative care & pain management",
+      desc: "Provide comfort and pain relief for those with serious illness."
+    },
+    {
+      icon: faAppleAlt,
+      title: "Cancer screenings",
+      desc: "Early detection of cancer to improve treatment outcomes."
+    },
+    {
+      icon: faBook,
+      title: "Non-communicable disease",
+      desc: "Manage and prevent chronic diseases in the elderly."
+    },
+    {
+      icon: faShieldAlt,
+      title: "Geriatric healthcare services",
+      desc: "Specialized health care for the aging population."
+    }
+  ],
+  7: [
+    {
+      icon: faUser,
+      title: "Public health funeral services",
+      desc: "Ensure dignified and safe funeral services for all."
+    },
+    {
+      icon: faBook,
+      title: "Death registration & vital statistics",
+      desc: "Accurately record deaths and vital statistics for planning and services."
+    },
+    {
+      icon: faHeartbeat,
+      title: "Bereavement & grief counseling",
+      desc: "Support families and individuals coping with loss."
+    },
+    {
+      icon: faAppleAlt,
+      title: "Palliative & hospice cares",
+      desc: "Provide compassionate end-of-life care and support."
+    }
+  ]
+};
 
 function MainContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -389,6 +587,18 @@ const stageInfo=[
               onClick={() => {
                 if (stage?.id === 1) {
                   navigate('/stage1');
+                } else if (stage?.id === 2) {
+                  navigate('/stage2');
+                } else if (stage?.id === 3) {
+                  navigate('/stage3');
+                } else if (stage?.id === 4) {
+                  navigate('/stage4');
+                } else if (stage?.id === 5) {
+                  navigate('/stage5');
+                } else if (stage?.id === 6) {
+                  navigate('/stage6');
+                } else if (stage?.id === 7) {
+                  navigate('/stage7');
                 }
               }}
             >
@@ -401,8 +611,7 @@ const stageInfo=[
                 style={{ position: 'relative', zIndex: 2 }}
               >
                 {stage.icon?.()}
-                {/* Arrow from Prenatal circle to box */}
-                {stage.id === 1 && activeStep === 1 && (
+                {activeStep === stage.id && (
                   <svg
                     width="40"
                     height="50"
@@ -430,24 +639,13 @@ const stageInfo=[
             {/* Envisioned Health Ecosystem */}
             <h2 className="text-xl font-bold text-gray-900">Envisioned Health Ecosystem</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
-                <FontAwesomeIcon icon={faHeartbeat} className="text-blue-700 text-2xl mb-2" />
-                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Antenatal Care</h3>
-                <p className="text-gray-700 text-sm mb-2 text-center">Ensures a safe pregnancy through regular check-ups, screenings, and timely medical guidance for expectant mothers.</p>
-                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
-                <FontAwesomeIcon icon={faAppleAlt} className="text-blue-700 text-2xl mb-2" />
-                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Folic Acid & Iron Supplementation</h3>
-                <p className="text-gray-700 text-sm mb-2 text-center">Provides essential nutrients to prevent anemia and support brain and spine development in unborn babies.</p>
-                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
-              </div>
-              <div className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
-                <FontAwesomeIcon icon={faShieldAlt} className="text-blue-700 text-2xl mb-2" />
-                <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">Vaccinations for Pregnant Woman</h3>
-                <p className="text-gray-700 text-sm mb-2 text-center">Protects both mother and child from dangerous infections like tetanus, influenza, and whooping cough during pregnancy.</p>
-                <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1 text-sm">Learn More <span>&rarr;</span></a>
-              </div>
+              {(stageEcosystem[activeStep] || stageEcosystem[1]).map((item, idx) => (
+                <div key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                  <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" />
+                  <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.title}</h3>
+                  <p className="text-gray-700 text-sm mb-2 text-center">{item.desc}</p>
+                </div>
+              ))}
             </div>
 
             {/* Enabling Frontier Technologies */}
@@ -504,6 +702,12 @@ function App() {
       <Routes>
         <Route path="/" element={<MainContent />} />
         <Route path="/stage1" element={<L1page />} />
+        <Route path="/stage2" element={<Ls2 />} />
+        <Route path="/stage3" element={<Ls3 />} />
+        <Route path="/stage4" element={<Ls4 />} />
+        <Route path="/stage5" element={<Ls5 />} />
+        <Route path="/stage6" element={<Ls6 />} />
+        <Route path="/stage7" element={<Ls7 />} />
       </Routes>
     </Router>
   )

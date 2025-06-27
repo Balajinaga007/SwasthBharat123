@@ -126,6 +126,55 @@ const Navbar = () => {
           .languages{
             background:rgb(51, 88, 155);
             }
+            .dropdown {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: white;
+          color: black;
+          min-width: 180px;
+          border-radius: 4px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(10px);
+          transition: all 0.2s ease;
+          z-index: 100;
+        }
+           .nav-links {
+          list-style: none;
+          display: flex;
+          margin: 0;
+          padding: 0;
+        }
+        .nav-links li {
+          margin: 0 1rem;
+          position: relative;
+        }
+        .nav-links a {
+          color: white;
+          text-decoration: none;
+          font-size: ${fontSizeMap[fontSize]};
+          position: relative;
+        }
+        .nav-links a:hover {
+          color: #FFF9C4;
+        }
+          .nav-links li:hover .dropdown {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        .dropdown a {
+          display: block;
+          padding: 10px 15px;
+          color: #333;
+          text-decoration: none;
+        }
+        .dropdown a:hover {
+          background-color: #f1f1f1;
+          color: #003087;
+        }
         `}
       </style>
       <div className="logo">
@@ -133,15 +182,25 @@ const Navbar = () => {
         <span className="brand" style={{ fontSize: '1.5rem' }}>SwasthBharath</span>
       </div>
       
-      <ul className="nav-links" style={{ fontSize: fontSizeMap[fontSize] }}>
-        {navLinks.map(link => (
+      <ul className="nav-links">
+        {navLinks.map((link) => (
           <li key={link.label}>
             <Link
               to={link.to}
-              className={link.match.test(location.pathname) ? 'active' : ''}
+              className={link.match.test(location.pathname) ? "active" : ""}
             >
               {link.label}
             </Link>
+
+            {link.label === "Life Stages" && (
+              <div className="dropdown">
+                {[1, 2, 3, 4, 5, 6, 7].map((stage) => (
+                  <Link key={stage} to={`/stage${stage}`}>
+                    Stage {stage}
+                  </Link>
+                ))}
+              </div>
+            )}
           </li>
         ))}
       </ul>
