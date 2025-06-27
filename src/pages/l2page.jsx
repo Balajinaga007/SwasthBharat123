@@ -95,7 +95,7 @@ const Ls2 = () => {
 
         {/* Call to Action */}
         <div className="bg-blue-900 text-white p-10 text-center mb-0">
-          <h2 className="text-2xl font-bold mb-4">Start Your Child’s Healthy Journey Today</h2>
+          <h2 className="text-2xl font-bold mb-4">Start Your Child's Healthy Journey Today</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div className="bg-blue-800 p-4 rounded-lg">
               <h3 className="text-lg font-semibold">Early Intervention</h3>
