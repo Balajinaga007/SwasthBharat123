@@ -442,7 +442,7 @@ const stageInfo=[
 
       {/* Main Title with extra spacing from navigation */}
       <div className="w-full bg-ta-cream text-center pt-10 pb-4">
-        <h1 className="text-4xl md:text-6xl font-light mb-0 text-ta-dark-brown tracking-wide">
+        <h1 className="text-4xl md:text-6xl font-dark mb-0 text-ta-dark-brown tracking-wide">
           Increase your Healthspan with Lifespan
         </h1>
       </div>
@@ -454,9 +454,9 @@ const stageInfo=[
             <img
               src="/images/hero1.jpg"
               alt="Hero Background Left"
-              className="w-full h-full object-cover object-center opacity-40 pointer-events-none select-none"
+              className="w-full h-full object-fit object-center opacity-40 pointer-events-none select-none"
             />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] md:w-[55%] flex items-center justify-center">
               <div className="text-2xl md:text-3xl font-bold text-ta-dark-brown text-center drop-shadow-sm">
                 Lifespan
                 <div className="text-base md:text-lg font-medium mt-0 text-ta-dark-brown opacity-90">
@@ -470,7 +470,7 @@ const stageInfo=[
             <img
               src="/images/hero2.jpg"
               alt="Hero Background Right"
-              className="w-full h-full object-cover object-center opacity-40 pointer-events-none select-none"
+              className="w-full h-full object-fit object-center opacity-40 pointer-events-none select-none"
             />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[85%] flex items-center justify-center">
               <div className="text-2xl md:text-3xl font-bold text-ta-dark-brown text-center drop-shadow-sm">
