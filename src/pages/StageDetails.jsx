@@ -73,7 +73,7 @@ useEffect(() => {
           {/* Envisioned Health Ecosystem */}
           <h2 className="text-2xl font-bold mb-6 text-gray-900">Envisioned Health Ecosystem</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-           {stageDetails?.health_ecosystem_items?.map(val=> <div key={val.id} className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
+           {stageDetails?.health_ecosystem_items?.map(val=> <a href={`/stageDetails/${id}/health_ecosystem/${val.documentId}`} key={val.id} className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
             <div
                       className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
 
@@ -81,15 +81,16 @@ useEffect(() => {
                     />
               <h3 className="text-lg font-semibold text-gray-900 mb-2 min-h-[50px]">{val?.Title}</h3>
               {val?.description&& <p className="text-gray-700 mb-4 min-h-[120px] ">{val.description}</p>}
-              <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1">Learn More <span>&rarr;</span></a>
-            </div>)}
+              <a href={`/stageDetails/${id}/health_ecosystem/${val.documentId}`} className="text-blue-600 hover:underline font-medium flex items-center gap-1">Learn More <span>&rarr;</span></a>
+            </a>)}
            
           </div>
 
           {/* Enabling Frontier Technologies */}
           <h2 className="text-2xl font-bold mb-6 text-gray-900">Enabling Frontier Technologies</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-          {stageDetails?.frontier_technologies?.map(val=><div key={val.id} className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
+          {stageDetails?.frontier_technologies?.map(val=><a href={`/stageDetails/${id}/frontier_technologies/${val.documentId}`}
+          key={val.id} className="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
             <div
                       className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
 
@@ -97,8 +98,8 @@ useEffect(() => {
                     />
               <h3 className="text-lg font-semibold text-gray-900 mb-2 min-h-[50px]">{val?.Title}</h3>
           {val?.description&&<p className="text-gray-700 mb-4 min-h-[120px] ">{val.description}</p>}
-              <a href="#" className="text-blue-600 hover:underline font-medium flex items-center gap-1">Learn More <span>&rarr;</span></a>
-            </div>)}
+              <a href={`/stageDetails/${id}/frontier_technologies/${val.documentId}`} className="text-blue-600 hover:underline font-medium flex items-center gap-1">Learn More <span>&rarr;</span></a>
+            </a>)}
            
           </div>
 </>:<div className='flex spin-pause h-[500px] flex items-center justify-center'><Loader/></div>}

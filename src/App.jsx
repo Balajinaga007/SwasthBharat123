@@ -27,6 +27,7 @@ import HeroSection from './components/slider'
 import { getStages } from './services/content'
 import StageDetails from './pages/StageDetails';
 import Loader from './svg/Loader';
+import StagesInfo from './pages/StagesInfo';
 
 
 
@@ -447,18 +448,8 @@ function MainContent() {
     setLoading(true)
     try {
       const data = await getStages()
-      let stages = [];
-      let healthEcoSystem = [];
-      let frontierTech = [];
-      data?.data?.forEach(element => {
-        stages = [...stages, { title: element.Title, AgeRange: element.AgeRange, icon: element?.icon, id: element.id, documentId: element.documentId }]
-        const data1 = element?.health_ecosystem_items?.map(stage => ({ ...stage, stageId: element.id }))
-        healthEcoSystem = [...healthEcoSystem, ...data1]
-        const data2 = element?.frontier_technologies?.map(stage => ({ ...stage, stageId: element.id }))
 
-        if (data2) { frontierTech = [...frontierTech, ...data2] }
-      });
-      setStagesData({ stages, healthEcoSystem, frontierTech })
+      setStagesData(data?.data)
     } catch (err) {
       console.log(err.message)
     }
@@ -468,15 +459,16 @@ function MainContent() {
     fetchStages()
   }, [])
 
-  const filteredhealthEcoSystem =
- activeStep
-    ? stagesData?.healthEcoSystem?.filter(val => val?.stageId === activeStep)
-    : stagesData?.healthEcoSystem?.filter(val => val?.stageId === stagesData?.stages?.[0]?.id);
-    const filteredfrontierTech =
-    activeStep
-       ? stagesData?.frontierTech?.filter(val => val?.stageId === activeStep)
-       : stagesData?.frontierTech?.filter(val => val?.stageId === stagesData?.stages?.[0]?.id);
-   
+  //   const filteredhealthEcoSystem =
+  //  activeStep
+  //     ? stagesData?.healthEcoSystem?.filter(val => val?.stageId === activeStep)
+  //     : stagesData?.healthEcoSystem?.filter(val => val?.stageId === stagesData?.stages?.[0]?.id);
+  //     const filteredfrontierTech =
+  //     activeStep
+  //        ? stagesData?.frontierTech?.filter(val => val?.stageId === activeStep)
+  //        : stagesData?.frontierTech?.filter(val => val?.stageId === stagesData?.stages?.[0]?.id);
+  const currentStep = stagesData?.find(val => val.id === activeStep)||stagesData[0]
+  console.log(currentStep, "hh")
   return (
     <div className="min-h-screen bg-ta-cream">
       {/* Navigation */}
@@ -606,7 +598,7 @@ function MainContent() {
       </section> */}
 
       {/* Tag Cloud Section */}
-     {!loading? <section className="w-full py-8 px-4 font-work-sans" style={{ backgroundColor: '#29136C', fontFamily: 'Work Sans, sans-serif' }}>
+      {!loading ? <section className="w-full py-8 px-4 font-work-sans" style={{ backgroundColor: '#29136C', fontFamily: 'Work Sans, sans-serif' }}>
         <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-light text-ta-white mb-6">
@@ -621,7 +613,7 @@ function MainContent() {
         <div className="max-w-6xl mx-auto relative">
           {/* 7 Circles */}
           <div className="flex justify-between items-start mb-8 relative">
-            {stagesData?.stages?.map((stage, index) => (
+            {stagesData?.map((stage, index) => (
               <div
                 key={index}
                 className='w-28 flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 hover:scale-110 relative'
@@ -643,7 +635,7 @@ function MainContent() {
                 //     navigate('/stage7');
                 //   }
                 // }}
-                onClick={()=> navigate(`/stageDetails/${stage.documentId}`)}
+                onClick={() => navigate(`/stageDetails/${stage.documentId}`)}
               >
                 {/* Fixed height for title to align circles */}
                 <div style={{ minHeight: 70, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
@@ -653,12 +645,12 @@ function MainContent() {
                   className={`w-28 h-28 rounded-full flex-shrink-0 ${activeStep === stage.id ? "text-[green] bg-[#9AD9B1]" : "text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
                   style={{ position: 'relative', zIndex: 2 }}
                 >
-                    <div
-                      className={`svg-container  ${activeStep === stage.id ? "text-[green]   w-[1.875rem] h-[2.5rem] " : "text-ta-dark-brown  w-[1.875rem] h-[2.5rem]"} transition-all duration-300 ease-in-out  `}
+                  <div
+                    className={`svg-container  ${activeStep === stage.id ? "text-[green]   w-[1.875rem] h-[2.5rem] " : "text-ta-dark-brown  w-[1.875rem] h-[2.5rem]"} transition-all duration-300 ease-in-out  `}
 
-                      dangerouslySetInnerHTML={{ __html: stage.icon }}
-                    />
-                 
+                    dangerouslySetInnerHTML={{ __html: stage.icon }}
+                  />
+
 
                 </div>
                 {activeStep === stage.id && (
@@ -680,8 +672,8 @@ function MainContent() {
                     <polygon points="0,110 4,110 2,120" fill="white" />
                   </svg>
                 )}
-            
-            
+
+
               </div>
             ))}
           </div>
@@ -690,41 +682,42 @@ function MainContent() {
             {/* Envisioned Health Ecosystem */}
             <h2 className="text-xl font-bold text-gray-900">Envisioned Health Ecosystem</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {filteredhealthEcoSystem?.map((item, idx) => (
-                <div key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
-                  {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}
-                  <div
+              {currentStep?.health_ecosystem_items
+                ?.map((item, idx) => (
+                  <a href={`/stageDetails/${currentStep?.documentId}/health_ecosystem/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                    {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}
+                    <div
                       className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
 
                       dangerouslySetInnerHTML={{ __html: item.icon }}
                     />
-                 
-                  <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.Title}</h3>
-                  <p className="text-gray-700 text-sm mb-2 text-center">{item.description}</p>
-                </div>
-              ))}
+
+                    <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.Title}</h3>
+                    <p className="text-gray-700 text-sm mb-2 text-center">{item.description}</p>
+                  </a>
+                ))}
             </div>
 
             {/* Enabling Frontier Technologies */}
             <h2 className="text-xl pt-7 font-bold text-gray-900 mt-2">Enabling Frontier Technologies</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {filteredfrontierTech?.map((item, idx) => (
-                <div key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+              {currentStep?.frontier_technologies?.map((item, idx) => (
+                <a href={`/stageDetails/${currentStep?.documentId}/frontier_technologies/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
                   {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}
                   <div
-                      className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
+                    className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
 
-                      dangerouslySetInnerHTML={{ __html: item.icon }}
-                    />
-                 
+                    dangerouslySetInnerHTML={{ __html: item.icon }}
+                  />
+
                   <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.Title}</h3>
                   <p className="text-gray-700 text-sm mb-2 text-center">{item.description}</p>
-                </div>
+                </a>
               ))}
             </div>
           </div>
         </div>
-      </section>:<div className='flex spin-pause h-[500px] flex items-center justify-center'><Loader/></div>}
+      </section> : <div className='flex spin-pause h-[500px] flex items-center justify-center'><Loader /></div>}
       {/* <HealthEcosystemTimeline /> */}
 
       {/* Footer */}
@@ -755,6 +748,7 @@ function App() {
         <Route path="/stage6" element={<Ls6 />} />
         <Route path="/stage7" element={<Ls7 />} />
         <Route path="/StageDetails/:id" element={<StageDetails />} />
+        <Route path="/stageDetails/:stageid/:type/:id" element={<StagesInfo />} />
       </Routes>
     </Router>
   )
