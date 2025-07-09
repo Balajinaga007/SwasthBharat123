@@ -1,11 +1,13 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { getStages } from '../services/content';
 
 const Navbar = () => {
   const location = useLocation();
   const [fontSize, setFontSize] = useState('medium');
-
+ const [loading,setLoading]=useState(false)
+ const [stagesData,setStagesData]=useState()
   const handleFontDecrease = () => setFontSize('small');
   const handleFontIncrease = () => setFontSize('large');
 
@@ -25,6 +27,20 @@ const Navbar = () => {
     { to: '/help', label: 'Help', match: /^\/help/ },
   ];
 
+  const fetchStages = async () => {
+    setLoading(true)
+    try {
+      const data = await getStages()
+
+      setStagesData(data?.data)
+    } catch (err) {
+      console.log(err.message)
+    }
+    setLoading(false)
+  }
+  useEffect(() => {
+    fetchStages()
+  }, [])
   return (
     <nav className="navbar">
       <style>
@@ -186,7 +202,7 @@ const Navbar = () => {
         {navLinks.map((link) => (
           <li key={link.label}>
             <Link
-              to={link.to}
+              to={link.label !== "Life Stages"?link.to:""}
               className={link.match.test(location.pathname) ? "active" : ""}
             >
               {link.label}
@@ -194,17 +210,10 @@ const Navbar = () => {
 
             {link.label === "Life Stages" && (
               <div className="dropdown">
-                {[
-                  "Prenatal and Maternal Care",
-                  "Neonatal & Infant Care",
-                  "Early Childhood",
-                  "School Age & Adolescence",
-                  "Adulthood",
-                  "Elderly Care",
-                  "End of the Life"
-                ].map((label, idx) => (
-                  <Link key={label} to={`/stage${idx + 1}`}>
-                    {label}
+                {stagesData?.map((label, idx) => (
+                  <Link key={idx} to={`/stageDetails/${label.documentId}`}>
+                    {label?.Title}
+                    
                   </Link>
                 ))}
               </div>

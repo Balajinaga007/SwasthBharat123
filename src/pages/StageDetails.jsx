@@ -40,7 +40,7 @@ const fetchStageDetails=async()=>{
 useEffect(()=>{
     fetchStageDetails()
 }
-,[])
+,[id])
 useEffect(() => {
     // Scroll to top on every route change
     window.scrollTo(0, 0);

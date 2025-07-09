@@ -165,7 +165,7 @@ const Slider=()=> {
       }
 
       // Hero slideshow scroll-hijacking animation with slide-in-from-right
-      if (heroRef.current && imageRefs.current.length === 3) {
+      if (heroRef.current && imageRefs.current.length === 3)  {
         // Initially position all slides - first slide visible, others positioned to the right
         imageRefs.current.forEach((img, index) => {
           if (img) {
