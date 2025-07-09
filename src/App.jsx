@@ -28,6 +28,7 @@ import { getStages } from './services/content'
 import StageDetails from './pages/StageDetails';
 import Loader from './svg/Loader';
 import StagesInfo from './pages/StagesInfo';
+import StagesCarousel from './components/StagesCarousel';
 
 
 
@@ -400,50 +401,6 @@ function MainContent() {
     return () => ctx.revert()
   }, [])
 
-  const stageInfo = [
-    {
-      id: 1,
-      title: "Prenatal and Maternal Care",
-      ageRange: "Before Birth",
-      icon: () => <Stage1 width="40" height="50" />
-    },
-    {
-      id: 2,
-      "title": "Neonatal & Infant Care",
-      "ageRange": "0-1 Year",
-      icon: () => <Stage2 width="40" height="50" />
-    },
-    {
-      id: 3,
-      "title": "Early Childhood",
-      "ageRange": "1 - 5 Years",
-      icon: () => <Stage3 width="40" height="50" />
-    }, {
-      id: 4,
-      "title": "School Age & Adolescence",
-      "ageRange": "5 - 18 Years",
-      icon: () => <Stage4 width="40" height="50" />
-    },
-    {
-      id: 5,
-      "title": "Adulthood",
-      "ageRange": "18 - 60 Years",
-      icon: () => <Stage5 width="40" height="50" />
-    },
-    {
-      id: 6,
-      "title": "Elderly Care",
-      "ageRange": "60+ Years",
-      icon: () => <Stage6 width="40" height="50" />
-    },
-    {
-      id: 7,
-      "title": "End of the Life",
-      "ageRange": null,
-      icon: () => <Stage7 width="40" height="50" />
-    }
-
-  ]
   const fetchStages = async () => {
     setLoading(true)
     try {
@@ -459,16 +416,8 @@ function MainContent() {
     fetchStages()
   }, [])
 
-  //   const filteredhealthEcoSystem =
-  //  activeStep
-  //     ? stagesData?.healthEcoSystem?.filter(val => val?.stageId === activeStep)
-  //     : stagesData?.healthEcoSystem?.filter(val => val?.stageId === stagesData?.stages?.[0]?.id);
-  //     const filteredfrontierTech =
-  //     activeStep
-  //        ? stagesData?.frontierTech?.filter(val => val?.stageId === activeStep)
-  //        : stagesData?.frontierTech?.filter(val => val?.stageId === stagesData?.stages?.[0]?.id);
-  const currentStep = stagesData?.find(val => val.id === activeStep)||stagesData[0]
-  console.log(currentStep, "hh")
+  const currentStep = stagesData?.find(val => val.id === activeStep) || stagesData[0]
+
   return (
     <div className="min-h-screen bg-ta-cream">
       {/* Navigation */}
@@ -480,11 +429,11 @@ function MainContent() {
           Increase your Healthspan with Lifespan
         </h1>
       </div>
-      <section className="bg-ta-cream text-center relative overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center">
+      <section className="bg-ta-cream text-center relative overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center pb-10">
         {/* Flex container for hero images */}
         <div className="flex flex-col md:flex-row w-full h-full relative z-0">
           {/* Left image and overlay */}
-          <div className="relative w-full md:w-1/2 h-64 md:h-[600px] flex items-center justify-center">
+          <div className="relative w-full md:w-1/2 h-64 md:h-[600px] flex items-center justify-center md:pb-0 pb-20">
             <img
               src="/images/hero1.jpg"
               alt="Hero Background Left"
@@ -500,7 +449,7 @@ function MainContent() {
             </div>
           </div>
           {/* Right image and overlay */}
-          <div className="relative w-full md:w-1/2 h-64 md:h-[600px] flex items-center justify-center">
+          <div className="relative w-full md:w-1/2 h-64 md:h-[600px] flex items-center justify-center md:pb-0 pb-20">
             <img
               src="/images/hero2.jpg"
               alt="Hero Background Right"
@@ -531,29 +480,14 @@ function MainContent() {
       </section>
 
       {/* Hero Section with Slideshow */}
-      <HeroSection />
-      {/* <section
-        ref={heroRef}
-        className="relative h-[300vh] bg-ta-cream"
-      >
-        <div className="slideshow-container sticky top-0 h-screen overflow-hidden">
-          
-          {[1, 2, 3].map((slideNumber, index) => (
-            <img
-              key={slideNumber}
-              ref={el => imageRefs.current[index] = el}
-              src={`/images/slide${slideNumber}.png`}
-              alt={`SwasthBharat Slide ${slideNumber}`}
-              className="absolute inset-0 w-full h-full object-contain"
-            />
-          ))}
 
-        </div>
-      </section> */}
+      <HeroSection />
+
+
 
       {/* Typewriter Section */}
-      <section className="py-0 my-0 px-4 bg-ta-white flex items-center justify-center">
-        <div className="max-w-6xl mx-auto text-center m-0 p-0">
+      <section className="py-0 my-0 px-4 bg-ta-white flex items-center justify-center ]">
+        <div className="max-w-6xl mx-auto text-center m-0 pt-5 md:p-0">
           <div className="relative m-0 p-0">
             <p
               ref={typewriterRef}
@@ -588,148 +522,120 @@ function MainContent() {
 
       {/* Placeholder Section */}
       <WhyImportantSection />
-      {/* <section className="py-10 px-4 bg-ta-white flex items-center justify-center">
-        <div className="max-w-4xl mx-auto text-center">
-          
-          <p className="text-2xl text-ta-brown max-w-4xl mx-auto font-light leading-relaxed">
-          "Enjoy a better quality of life—stay active, independent, and connected with the world around you, even in your later years."
-          </p>
-        </div>
-      </section> */}
 
       {/* Tag Cloud Section */}
-      {!loading ? <section className="w-full py-8 px-4 font-work-sans" style={{ backgroundColor: '#29136C', fontFamily: 'Work Sans, sans-serif' }}>
-        <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-light text-ta-white mb-6">
-              Technology for Healthspan
-            </h2>
-            <p className="text-xl text-white max-w-1xl mx-auto  leading-relaxed">
-              We are showcasing the frontier technologies that can help us bridge this gap for every life stage.
-            </p>
-          </div>
-        </section>
+      {!loading ?
+        <>
 
-        <div className="max-w-6xl mx-auto relative">
-          {/* 7 Circles */}
-          <div className="flex justify-between items-start mb-8 relative">
-            {stagesData?.map((stage, index) => (
-              <div
-                key={index}
-                className='w-28 flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 hover:scale-110 relative'
-                onMouseEnter={() => setActiveStep(stage?.id)}
-                // onClick={() => {
-                //   if (stage?.id === 1) {
-                //     navigate('/stage1');
-                //   } else if (stage?.id === 2) {
-                //     navigate('/stage2');
-                //   } else if (stage?.id === 3) {
-                //     navigate('/stage3');
-                //   } else if (stage?.id === 4) {
-                //     navigate('/stage4');
-                //   } else if (stage?.id === 5) {
-                //     navigate('/stage5');
-                //   } else if (stage?.id === 6) {
-                //     navigate('/stage6');
-                //   } else if (stage?.id === 7) {
-                //     navigate('/stage7');
-                //   }
-                // }}
-                onClick={() => navigate(`/stageDetails/${stage.documentId}`)}
-              >
-                {/* Fixed height for title to align circles */}
-                <div style={{ minHeight: 70, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
-                  <p className={`text-center transition-all duration-300 mb-1 ${activeStep === stage.id ? "text-[green]" : "text-white"}`}>{stage.title}</p>
-                </div>
-                <div
-                  className={`w-28 h-28 rounded-full flex-shrink-0 ${activeStep === stage.id ? "text-[green] bg-[#9AD9B1]" : "text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
-                  style={{ position: 'relative', zIndex: 2 }}
-                >
-                  <div
-                    className={`svg-container  ${activeStep === stage.id ? "text-[green]   w-[1.875rem] h-[2.5rem] " : "text-ta-dark-brown  w-[1.875rem] h-[2.5rem]"} transition-all duration-300 ease-in-out  `}
-
-                    dangerouslySetInnerHTML={{ __html: stage.icon }}
-                  />
-
-
-                </div>
-                {activeStep === stage.id && (
-                  <svg
-                    width="40"
-                    height="50"
-                    viewBox="0 0 4 120"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      position: 'absolute',
-                      left: '50%',
-                      top: '100%',
-                      transform: 'translateX(-50%)',
-                      zIndex: 1,
-                    }}
-                  >
-                    <line x1="2" y1="0" x2="2" y2="110" stroke="white" strokeWidth="10" />
-                    <polygon points="0,110 4,110 2,120" fill="white" />
-                  </svg>
-                )}
-
-
+          <section className=" py-8 px-4 font-work-sans " style={{ backgroundColor: '#29136C', fontFamily: 'Work Sans, sans-serif' }}>
+            <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
+              <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-3xl md:text-4xl font-light text-ta-white mb-6">
+                  Technology for Healthspan
+                </h2>
+                <p className="text-xl text-white max-w-1xl mx-auto  leading-relaxed">
+                  We are showcasing the frontier technologies that can help us bridge this gap for every life stage.
+                </p>
               </div>
-            ))}
-          </div>
-
-          <div className="bg-white rounded-xl h-[600px] p-3.5 flex flex-col gap-1 overflow-y-auto" ref={stagesContainer}>
-            {/* Envisioned Health Ecosystem */}
-            <h2 className="text-xl font-bold text-gray-900">Envisioned Health Ecosystem</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {currentStep?.health_ecosystem_items
-                ?.map((item, idx) => (
-                  <a href={`/stageDetails/${currentStep?.documentId}/health_ecosystem/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
-                    {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}
+            </section>
+            <div className='md:hidden'>
+              <StagesCarousel data={stagesData} />
+            </div>
+            <div className=' hidden md:block'>
+              <div className="md:max-w-6xl mx-auto relative w-6xl ">
+                {/* 7 Circles */}
+                <div className="flex justify-between items-start mb-8 relative">
+                  {stagesData?.map((stage, index) => (
                     <div
-                      className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
+                      key={index}
+                      className='keen-slider__slide  w-28 flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 hover:scale-110 relative'
+                      onMouseEnter={() => setActiveStep(stage?.id)}
 
-                      dangerouslySetInnerHTML={{ __html: item.icon }}
-                    />
+                      onClick={() => navigate(`/stageDetails/${stage.documentId}`)}
+                    >
+                      {/* Fixed height for title to align circles */}
+                      <div style={{ minHeight: 70, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+                        <p className={`text-center transition-all duration-300 mb-1 ${activeStep === stage.id ? "text-[green]" : "text-white"}`}>{stage.Title}</p>
+                      </div>
+                      <div
+                        className={`w-28 h-28 rounded-full flex-shrink-0 ${activeStep === stage.id ? "text-[green] bg-[#9AD9B1]" : "text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
+                        style={{ position: 'relative', zIndex: 2 }}
+                      >
+                        <div
+                          className={`svg-container  ${activeStep === stage.id ? "text-[green]   w-[1.875rem] h-[2.5rem] " : "text-ta-dark-brown  w-[1.875rem] h-[2.5rem]"} transition-all duration-300 ease-in-out  `}
 
-                    <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.Title}</h3>
-                    <p className="text-gray-700 text-sm mb-2 text-center">{item.description}</p>
-                  </a>
-                ))}
+                          dangerouslySetInnerHTML={{ __html: stage.icon }}
+                        />
+
+
+                      </div>
+                      {activeStep === stage.id && (
+                        <svg
+                          width="40"
+                          height="50"
+                          viewBox="0 0 4 120"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style={{
+                            position: 'absolute',
+                            left: '50%',
+                            top: '100%',
+                            transform: 'translateX(-50%)',
+                            zIndex: 1,
+                          }}
+                        >
+                          <line x1="2" y1="0" x2="2" y2="110" stroke="white" strokeWidth="10" />
+                          <polygon points="0,110 4,110 2,120" fill="white" />
+                        </svg>
+                      )}
+
+
+                    </div>
+                  ))}
+                </div>
+
+                <div className="bg-white rounded-xl h-[600px] p-3.5 flex flex-col gap-1 overflow-y-auto" ref={stagesContainer}>
+                  {/* Envisioned Health Ecosystem */}
+                  <h2 className="text-xl font-bold text-gray-900">Envisioned Health Ecosystem</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    {currentStep?.health_ecosystem_items
+                      ?.map((item, idx) => (
+                        <a href={`/stageDetails/${currentStep?.documentId}/health_ecosystem/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                          {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}
+                          <div
+                            className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
+
+                            dangerouslySetInnerHTML={{ __html: item.icon }}
+                          />
+
+                          <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.Title}</h3>
+                          <p className="text-gray-700 text-sm mb-2 text-center">{item.description}</p>
+                        </a>
+                      ))}
+                  </div>
+
+                  {/* Enabling Frontier Technologies */}
+                  <h2 className="text-xl pt-7 font-bold text-gray-900 mt-2">Enabling Frontier Technologies</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    {currentStep?.frontier_technologies?.map((item, idx) => (
+                      <a href={`/stageDetails/${currentStep?.documentId}/frontier_technologies/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
+                        {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}
+                        <div
+                          className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
+
+                          dangerouslySetInnerHTML={{ __html: item.icon }}
+                        />
+
+                        <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.Title}</h3>
+                        <p className="text-gray-700 text-sm mb-2 text-center">{item.description}</p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
+          </section>    </> : <div className='flex spin-pause h-[500px] flex items-center justify-center'><Loader /></div>}
 
-            {/* Enabling Frontier Technologies */}
-            <h2 className="text-xl pt-7 font-bold text-gray-900 mt-2">Enabling Frontier Technologies</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              {currentStep?.frontier_technologies?.map((item, idx) => (
-                <a href={`/stageDetails/${currentStep?.documentId}/frontier_technologies/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
-                  {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}
-                  <div
-                    className={`svg-container w-[1.5rem] h-[1.5rem] mb-2 text-blue-700`}
-
-                    dangerouslySetInnerHTML={{ __html: item.icon }}
-                  />
-
-                  <h3 className="text-base font-semibold text-gray-900 mb-1 text-center">{item.Title}</h3>
-                  <p className="text-gray-700 text-sm mb-2 text-center">{item.description}</p>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> : <div className='flex spin-pause h-[500px] flex items-center justify-center'><Loader /></div>}
-      {/* <HealthEcosystemTimeline /> */}
-
-      {/* Footer */}
-      {/* <footer className="py-16 px-4 bg-ta-dark-brown text-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="w-12 h-12 bg-ta-brown rounded-lg rotate-45 flex items-center justify-center mx-auto mb-6">
-            <div className="w-6 h-6 bg-ta-cream rounded-sm -rotate-45"></div>
-          </div>
-          <p className="text-ta-beige mb-4">Built in India</p>
-          <p className="text-ta-brown text-sm">© 2024 Niti Ayog. All rights reserved.</p>
-        </div>
-      </footer> */}
       <Footer />
     </div>
   )
