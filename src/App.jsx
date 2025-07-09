@@ -416,7 +416,7 @@ function MainContent() {
     fetchStages()
   }, [])
 
-  const currentStep = stagesData?.find(val => val.id === activeStep) || stagesData[0]
+  const currentStep = stagesData?.find(val => val.id === activeStep)?.health_ecosystem_items?.length?stagesData?.find(val => val.id === activeStep):stagesData[0]
 
   return (
     <div className="min-h-screen bg-ta-cream">
