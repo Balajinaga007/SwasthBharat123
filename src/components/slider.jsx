@@ -77,17 +77,17 @@
 //               }}
 //             />
 //           ))}
-//           {/* Blinking Dots Indicator */}
-//           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
-//             {[0, 1, 2].map((idx) => (
-//               <span
-//                 key={idx}
-//                 className={`md:w-4 md:h-4 w-2 h-2 rounded-full ${currentSlide === idx ? 'bg-black-700 animate-blink' : 'bg-gray-300'} block`}
-//                 style={{
-//                   boxShadow: currentSlide === idx ? '0 0 8px 2px rgb(14, 14, 15)' : 'none',
-//                   opacity: currentSlide === idx ? 1 : 0.6,
-//                 }}
-//               ></span>
+          // {/* Blinking Dots Indicator */}
+          // <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
+          //   {[0, 1, 2].map((idx) => (
+          //     <span
+          //       key={idx}
+                // className={`md:w-4 md:h-4 w-2 h-2 rounded-full ${currentSlide === idx ? 'bg-black-700 animate-blink' : 'bg-gray-300'} block`}
+                // style={{
+                //   boxShadow: currentSlide === idx ? '0 0 8px 2px rgb(14, 14, 15)' : 'none',
+                //   opacity: currentSlide === idx ? 1 : 0.6,
+                // }}
+          //     ></span>
 //             ))}
 //           </div>
 //         </div>
@@ -165,7 +165,7 @@ const Slider=()=> {
       }
 
       // Hero slideshow scroll-hijacking animation with slide-in-from-right
-      if (heroRef.current && imageRefs.current.length === 5) {
+      if (heroRef.current && imageRefs.current.length === 3) {
         // Initially position all slides - first slide visible, others positioned to the right
         imageRefs.current.forEach((img, index) => {
           if (img) {
@@ -186,7 +186,7 @@ const Slider=()=> {
           onUpdate: (self) => {
             // Calculate which slide should be visible based on scroll progress
             const progress = self.progress
-            const totalSlides = 5
+            const totalSlides = 3
             const slideIndex = Math.min(Math.floor(progress * totalSlides), totalSlides - 1)
             
             if (slideIndex !== currentSlide.current) {
@@ -271,11 +271,12 @@ const Slider=()=> {
       >
         <div className="slideshow-container sticky top-0 h-screen overflow-hidden">
           {/* Full Screen Slideshow Background */}
-          {[1, 2, 3, 4, 5].map((slideNumber, index) => (
+          {[1, 2, 3].map((slideNumber, index) => (
             <img
               key={slideNumber}
               ref={el => imageRefs.current[index] = el}
-              src={`/images/slide${slideNumber}.png`}
+              // src={`/images/slide${slideNumber}.png`}
+               src={`/images/Slide${slideNumber}.jpg`}
               alt={`SwasthBharat Slide ${slideNumber}`}
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -284,14 +285,17 @@ const Slider=()=> {
           {/* Slide Indicators */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
             <div className="flex justify-center space-x-3">
-              {[0, 1, 2, 3, 4].map((index) => (
+              {[0, 1, 2].map((index) => (
                 <div
                   key={index}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentSlideIndex 
-                      ? 'bg-white scale-125 shadow-lg' 
-                      : 'bg-white/60 hover:bg-white/80'
+                    ? 'bg-black-700 animate-blink' : 'bg-gray-300'} 
                   }`}
+                  style={{
+                  boxShadow: index === currentSlideIndex  ? '0 0 8px 2px rgb(14, 14, 15)' : 'none',
+                  opacity: index === currentSlideIndex  ? 1 : 0.6,
+                }}
                 />
               ))}
             </div>
