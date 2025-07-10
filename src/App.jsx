@@ -36,197 +36,6 @@ import StagesCarousel from './components/StagesCarousel';
 
 gsap.registerPlugin(ScrollTrigger)
 
-const stageEcosystem = {
-  1: [
-    {
-      icon: faAppleAlt,
-      title: "Folic acid & iron supplementation",
-      desc: "Provides essential nutrients to prevent anemia and support brain and spine development in unborn babies."
-    },
-    {
-      icon: faShieldAlt,
-      title: "Vaccinations for pregnant women",
-      desc: "Protects both mother and child from dangerous infections during pregnancy."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Antenatal care",
-      desc: "Ensures a safe pregnancy through regular check-ups, screenings, and timely medical guidance."
-    }
-  ],
-  2: [
-    {
-      icon: faUser,
-      title: "Growth monitoring & early developmental screening",
-      desc: "Track children's growth and development to identify and address issues early for better health outcomes."
-    },
-    {
-      icon: faAppleAlt,
-      title: "Nutrition support",
-      desc: "Provide essential nutrients to support healthy growth and prevent malnutrition in children."
-    },
-    {
-      icon: faShieldAlt,
-      title: "Immunization",
-      desc: "Protect children from preventable diseases through timely vaccinations."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Newborn screening",
-      desc: "Early detection of health conditions in newborns for prompt intervention and care."
-    },
-    {
-      icon: faBook,
-      title: "Birth registration & vital statistics",
-      desc: "Ensure every child is registered at birth and vital statistics are recorded for better planning and services."
-    }
-  ],
-  3: [
-    {
-      icon: faUser,
-      title: "Preventive health check-ups",
-      desc: "Regular health check-ups to detect and address health issues early in childhood."
-    },
-    {
-      icon: faAppleAlt,
-      title: "Oral health programs",
-      desc: "Promote oral hygiene and prevent dental problems in children."
-    },
-    {
-      icon: faBook,
-      title: "Early childhood education & stimulation",
-      desc: "Support cognitive and emotional development through early learning programs."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Malnutrition prevention & treatment",
-      desc: "Identify and treat malnutrition to ensure healthy growth."
-    },
-    {
-      icon: faShieldAlt,
-      title: "Routine immunization",
-      desc: "Protect children from common infectious diseases through scheduled vaccinations."
-    }
-  ],
-  4: [
-    {
-      icon: faShieldAlt,
-      title: "Substance abuse prevention",
-      desc: "Educate and support adolescents to prevent substance abuse."
-    },
-    {
-      icon: faUser,
-      title: "Adolescent reproductive health",
-      desc: "Provide information and services for safe and healthy adolescence."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Mental health support",
-      desc: "Offer mental health resources and support for adolescents."
-    },
-    {
-      icon: faAppleAlt,
-      title: "Menstrual health & hygiene",
-      desc: "Promote menstrual hygiene and health education."
-    },
-    {
-      icon: faBook,
-      title: "School health programs",
-      desc: "Implement health programs in schools for overall well-being."
-    }
-  ],
-  5: [
-    {
-      icon: faShieldAlt,
-      title: "Vaccinations (Influenza, hepatitis B, COVID-19 boosters)",
-      desc: "Protect adults from infectious diseases with recommended vaccines."
-    },
-    {
-      icon: faUser,
-      title: "Preventive screenings",
-      desc: "Regular screenings to detect diseases early and improve outcomes."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Mental health services",
-      desc: "Access to mental health care and support for adults."
-    },
-    {
-      icon: faAppleAlt,
-      title: "Occupational health & safety",
-      desc: "Promote safe and healthy workplaces."
-    },
-    {
-      icon: faBook,
-      title: "Lifestyle disease prevention",
-      desc: "Encourage healthy habits to prevent lifestyle-related diseases."
-    },
-    {
-      icon: faShieldAlt,
-      title: "Infectious disease control",
-      desc: "Monitor and control the spread of infectious diseases."
-    },
-    {
-      icon: faUser,
-      title: "Maternal health services",
-      desc: "Support maternal health for women of reproductive age."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Reproductive & sexual health services",
-      desc: "Provide comprehensive reproductive and sexual health care."
-    }
-  ],
-  6: [
-    {
-      icon: faUser,
-      title: "Social support programs",
-      desc: "Offer social support to improve quality of life for the elderly."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Palliative care & pain management",
-      desc: "Provide comfort and pain relief for those with serious illness."
-    },
-    {
-      icon: faAppleAlt,
-      title: "Cancer screenings",
-      desc: "Early detection of cancer to improve treatment outcomes."
-    },
-    {
-      icon: faBook,
-      title: "Non-communicable disease",
-      desc: "Manage and prevent chronic diseases in the elderly."
-    },
-    {
-      icon: faShieldAlt,
-      title: "Geriatric healthcare services",
-      desc: "Specialized health care for the aging population."
-    }
-  ],
-  7: [
-    {
-      icon: faUser,
-      title: "Public health funeral services",
-      desc: "Ensure dignified and safe funeral services for all."
-    },
-    {
-      icon: faBook,
-      title: "Death registration & vital statistics",
-      desc: "Accurately record deaths and vital statistics for planning and services."
-    },
-    {
-      icon: faHeartbeat,
-      title: "Bereavement & grief counseling",
-      desc: "Support families and individuals coping with loss."
-    },
-    {
-      icon: faAppleAlt,
-      title: "Palliative & hospice cares",
-      desc: "Provide compassionate end-of-life care and support."
-    }
-  ]
-};
 
 function MainContent() {
   const [stagesData, setStagesData] = useState([])
@@ -416,7 +225,7 @@ function MainContent() {
     fetchStages()
   }, [])
 
-  const currentStep = stagesData?.find(val => val.id === activeStep)?.health_ecosystem_items?.length?stagesData?.find(val => val.id === activeStep):stagesData[0]
+  const currentStep = stagesData?.find(val => val.id === activeStep)?.health_ecosystem_items?.length ? stagesData?.find(val => val.id === activeStep) : stagesData[0]
 
   return (
     <div className="min-h-screen bg-ta-cream">
@@ -491,16 +300,17 @@ function MainContent() {
           <div className="relative m-0 p-0">
             <p
               ref={typewriterRef}
-              className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-ta-dark-brown text-left max-w-none break-words m-0 p-0"
+              className="text-2xl md:text-3xl lg:text-4xl leading-relaxed text-ta-dark-brown text-left m-0 p-0"
               style={{
                 fontFamily: 'Kalam, cursive',
                 fontWeight: '400',
                 lineHeight: '1.8',
                 wordWrap: 'break-word',
-                whiteSpace: 'normal',
                 overflowWrap: 'break-word',
-                margin: 0,
-                padding: 0,
+                whiteSpace: 'normal',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.05em',
               }}
             >
               Lifespan measures quantity; healthspan measures quality. Lifespan counts total years from birth to death, healthspan represents the period spent in good health, free from serious disease and disability.
@@ -527,9 +337,9 @@ function MainContent() {
       {!loading ?
         <>
 
-          <section className=" py-8 px-4 font-work-sans " style={{ backgroundColor: ' #CDCFF7', fontFamily: 'Work Sans, sans-serif' }}>
-            <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
-              <div className="max-w-4xl mx-auto text-center">
+          <section className=" py-8  font-work-sans " style={{ backgroundColor: ' #CDCFF7', fontFamily: 'Work Sans, sans-serif' }}>
+            <section className="pt-0 md:pb-16 px-4  flex items-center justify-center">
+              <div className="max-w-4xl mx-auto text-center ">
                 <h2 className="text-3xl md:text-4xl font-light  mb-6">
                   Technology for Healthspan
                 </h2>

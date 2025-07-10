@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { BiLeftArrow } from 'react-icons/bi';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const StagesCarousel = ({ data }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -17,10 +18,13 @@ const StagesCarousel = ({ data }) => {
         initial: 0,
         mode: "snap",
      
-
+  defaultAnimation: {
+    duration: 100, // milliseconds
+    easing: (t) => t, // linear easing; you can customize
+  },
         slides: {
             perView: 1,
-            spacing: 16,
+          
         },
         created() {
             setSliderReady(true);
@@ -45,7 +49,7 @@ const StagesCarousel = ({ data }) => {
                         >
                             {/* Fixed height for title to align circles */}
                             <div style={{ minHeight: 70, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
-                                <p className={`text-center transition-all duration-300 mb-1 ${currentSlide === index ? "text-[green]" : "text-white"}`}>{stage.Title}</p>
+                                <p className={`text-center transition-all duration-300 mb-1 ${currentSlide === index ? "text-[green]" : "text-black"}`}>{stage.Title}</p>
                             </div>
                             <div
                                 className={`w-28 h-28 rounded-full flex-shrink-0 ${currentSlide === index ? "text-[green] bg-[#9AD9B1]" : "text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
@@ -75,12 +79,12 @@ const StagesCarousel = ({ data }) => {
            
             }}
             disabled={currentSlide===0}
-            className="absolute left-2 bottom-[2rem] -translate-y-1/2 z-20 bg-white rounded-full w-[2rem] h-[2rem] shadow-lg focus:outline-none disabled:bg-gray-400"
+            className="absolute left-2 bottom-[2rem] -translate-y-1/2 z-20 bg-white rounded-full w-[2rem] h-[2rem] shadow-lg focus:outline-none disabled:bg-gray-400 flex items-center justify-center"
             aria-label="Previous Slide"
             style={{fontSize: 10, lineHeight: 1}}
             
           >
-            &#60;
+        <ChevronLeft size={20}/>
           </button>
           {/* Right Arrow */}
           <button
@@ -89,11 +93,11 @@ const StagesCarousel = ({ data }) => {
                  instanceRef.current?.next()
            
              }}
-            className="absolute right-2 bottom-[2rem] -translate-y-1/2 z-20 bg-white rounded-full w-[2rem] h-[2rem] shadow-lg focus:outline-none disabled:bg-gray-400"
+            className="absolute right-2 bottom-[2rem] -translate-y-1/2 z-20 bg-white rounded-full w-[2rem] h-[2rem] shadow-lg focus:outline-none disabled:bg-gray-400 flex items-center justify-center"
             aria-label="Next Slide"
             style={{fontSize: 10, lineHeight: 1}}
           >
-            &#62;
+         <ChevronRight size={20}/>
           </button>
                </>    
                   
@@ -107,8 +111,8 @@ const StagesCarousel = ({ data }) => {
                 </div>
           
                     {/* Envisioned Health Ecosystem */}
-                    <h2 className="text-xl font-bold text-white my-2">Envisioned Health Ecosystem</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <h2 className="text-xl font-bold  mt-2 mb-[2rem]">Envisioned Health Ecosystem</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-4 w-full">
                         {currentStep?.health_ecosystem_items
                             ?.map((item, idx) => (
                                 <a href={`/stageDetails/${currentStep?.documentId}/health_ecosystem/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
@@ -126,8 +130,8 @@ const StagesCarousel = ({ data }) => {
                     </div>
 
                     {/* Enabling Frontier Technologies */}
-                    <h2 className="text-xl pt-7 font-bold  text-white my-2">Enabling Frontier Technologies</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <h2 className="text-xl pt-7 font-bold   mt-2 mb-[2rem]">Enabling Frontier Technologies</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-4  w-full">
                         {currentStep?.frontier_technologies?.map((item, idx) => (
                             <a href={`/stageDetails/${currentStep?.documentId}/frontier_technologies/${item.documentId}`} key={idx} className="bg-white p-4 rounded-lg shadow border border-gray-200 flex flex-col items-center">
                                 {/* <FontAwesomeIcon icon={item.icon} className="text-blue-700 text-2xl mb-2" /> */}

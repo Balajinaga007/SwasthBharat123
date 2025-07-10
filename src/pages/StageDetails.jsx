@@ -63,7 +63,7 @@ useEffect(() => {
             <h1 className="text-3xl md:text-4xl font-bold text-blue-900">{stageDetails?.Title}</h1>
             <p className="text-gray-600 mt-2">{stageDetails?.description}</p>
           { stageDetails?.icon1&& <div
-                      className={`svg-container w-auto h-[8rem] mb-2 text-blue-700 absolute -top-6 right-0 `}
+                      className={`svg-container w-auto h-[8rem] mb-2 text-blue-700 absolute -top-6 right-0 hidden md:block `}
 
                       dangerouslySetInnerHTML={{ __html: stageDetails.icon1 }}
                     />}
