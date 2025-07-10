@@ -527,13 +527,13 @@ function MainContent() {
       {!loading ?
         <>
 
-          <section className=" py-8 px-4 font-work-sans " style={{ backgroundColor: '#29136C', fontFamily: 'Work Sans, sans-serif' }}>
+          <section className=" py-8 px-4 font-work-sans " style={{ backgroundColor: ' #CDCFF7', fontFamily: 'Work Sans, sans-serif' }}>
             <section className="pt-0 pb-16 px-4 bg-ta-[#29136C] flex items-center justify-center">
               <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl md:text-4xl font-light text-ta-white mb-6">
+                <h2 className="text-3xl md:text-4xl font-light  mb-6">
                   Technology for Healthspan
                 </h2>
-                <p className="text-xl text-white max-w-1xl mx-auto  leading-relaxed">
+                <p className="text-xl  max-w-1xl mx-auto  leading-relaxed">
                   We are showcasing the frontier technologies that can help us bridge this gap for every life stage.
                 </p>
               </div>
@@ -555,7 +555,7 @@ function MainContent() {
                     >
                       {/* Fixed height for title to align circles */}
                       <div style={{ minHeight: 70, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
-                        <p className={`text-center transition-all duration-300 mb-1 ${activeStep === stage.id ? "text-[green]" : "text-white"}`}>{stage.Title}</p>
+                        <p className={`text-center transition-all duration-300 mb-1 ${activeStep === stage.id ? "text-[green]" : "text-black"}`}>{stage.Title}</p>
                       </div>
                       <div
                         className={`w-28 h-28 rounded-full flex-shrink-0 ${activeStep === stage.id ? "text-[green] bg-[#9AD9B1]" : "text-ta-dark-brown bg-ta-beige"} flex items-center justify-center transition-all duration-300`}
