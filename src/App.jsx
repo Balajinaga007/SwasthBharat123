@@ -18,6 +18,9 @@ import Ls4 from './pages/l4page'
 import Ls5 from './pages/l5page'
 import Ls6 from './pages/l6page'
 import Ls7 from './pages/l7page'
+import About from './pages/About'
+import KnowledgeCenter from './pages/KnowledgeCenter'
+import Data from './pages/Data'
 import Footer from './components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faShieldAlt, faMobileAlt, faHeartbeat, faBook, faAppleAlt } from '@fortawesome/free-solid-svg-icons'
@@ -29,6 +32,7 @@ import StageDetails from './pages/StageDetails';
 import Loader from './svg/Loader';
 import StagesInfo from './pages/StagesInfo';
 import StagesCarousel from './components/StagesCarousel';
+import GovBanner from './components/GovBanner';
 
 
 
@@ -420,6 +424,9 @@ function MainContent() {
 
   return (
     <div className="min-h-screen bg-ta-cream">
+      {/* Government Banner */}
+      <GovBanner />
+
       {/* Navigation */}
       <Navbar />
 
@@ -519,6 +526,42 @@ function MainContent() {
         />
       </section>
 
+      {/* Healthspan-Lifespan Gap Description */}
+      <section className="py-16 px-4 bg-ta-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-light text-ta-dark-brown mb-8">
+            The 10-Year Gap Challenge
+          </h2>
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-8 mb-6">
+            <p className="text-xl text-gray-800 leading-relaxed mb-4">
+              Across the globe, there exists a significant <strong>10-year gap</strong> between lifespan and healthspan. 
+              While the average Indian lives to about <strong>70 years</strong>, they typically enjoy good health 
+              for only about <strong>60 years</strong>.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              This means that the final decade of life is often marked by chronic diseases, disabilities, 
+              and reduced quality of life. Our mission is to bridge this gap by promoting healthier living 
+              throughout all life stages, ensuring that Indians not only live longer but also live better.
+            </p>
+          </div>
+          <div className="flex justify-center items-center space-x-8 text-center">
+            <div className="bg-white p-6 rounded-lg shadow-md border-2 border-blue-200">
+              <div className="text-3xl font-bold text-blue-600 mb-2">70</div>
+              <div className="text-sm text-gray-600">Average Lifespan</div>
+            </div>
+            <div className="text-2xl text-gray-400">−</div>
+            <div className="bg-white p-6 rounded-lg shadow-md border-2 border-green-200">
+              <div className="text-3xl font-bold text-green-600 mb-2">60</div>
+              <div className="text-sm text-gray-600">Average Healthspan</div>
+            </div>
+            <div className="text-2xl text-gray-400">=</div>
+            <div className="bg-white p-6 rounded-lg shadow-md border-2 border-red-200">
+              <div className="text-3xl font-bold text-red-600 mb-2">10</div>
+              <div className="text-sm text-gray-600">Years of Poor Health</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Placeholder Section */}
       <WhyImportantSection />
@@ -646,6 +689,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainContent />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/knowledge-center" element={<KnowledgeCenter />} />
+        <Route path="/data" element={<Data />} />
         <Route path="/stage1" element={<L1page />} />
         <Route path="/stage2" element={<Ls2 />} />
         <Route path="/stage3" element={<Ls3 />} />

@@ -8,23 +8,14 @@ const Navbar = () => {
   const [fontSize, setFontSize] = useState('medium');
  const [loading,setLoading]=useState(false)
  const [stagesData,setStagesData]=useState()
-  const handleFontDecrease = () => setFontSize('small');
-  const handleFontIncrease = () => setFontSize('large');
 
-  const fontSizeMap = {
-    small: '14px',
-    medium: '16px',
-    large: '20px',
-  };
-
-  // Map route paths to nav link keys
+  // Map route paths to nav link keys (removed Help)
   const navLinks = [
     { to: '/', label: 'Home', match: /^\/$/ },
     { to: '/about', label: 'About', match: /^\/about/ },
     { to: '/stage1', label: 'Life Stages', match: /^\/stage1/ },
     { to: '/knowledge-center', label: 'Knowledge Center', match: /^\/knowledge-center/ },
     { to: '/data', label: 'Data', match: /^\/data/ },
-    { to: '/help', label: 'Help', match: /^\/help/ },
   ];
 
   const fetchStages = async () => {
@@ -49,10 +40,11 @@ const Navbar = () => {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to right, #003087, #0055A4);
+            background: white;
             padding: 1rem 2rem;
-            color: white;
+            color: #333;
             font-family: 'Work Sans', sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
           }
           .logo {
             display: flex;
@@ -72,16 +64,17 @@ const Navbar = () => {
           }
           .nav-links li {
             margin: 0 1rem;
+            position: relative;
           }
           .nav-links a {
             font-size:16px;
-            color: white;
+            color: #333;
             text-decoration: none;
             position: relative;
             transition: color 0.2s;
           }
           .nav-links a:hover {
-            color: #FFF9C4; /* light yellow */
+            color: #2D8686;
           }
           .nav-links a::after {
             content: '';
@@ -91,7 +84,7 @@ const Navbar = () => {
             bottom: -4px;
             width: 100%;
             height: 3px;
-            background: #FFD600; /* yellow */
+            background: #2D8686;
             opacity: 0;
             transform: scaleX(0);
             transition: opacity 0.2s, transform 0.2s;
@@ -108,18 +101,35 @@ const Navbar = () => {
             display: flex;
             align-items: center;
           }
-          .font-size button {
-            background: none;
-            border: none;
-            color: white;
-            margin: 0 0.5rem;
-            cursor: pointer;
+          .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            color: black;
+            min-width: 180px;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            z-index: 100;
           }
-          .language {
-            background: none;
-            border: none;
-            color: white;
-            margin-left: 1rem;
+          .nav-links li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+          .dropdown a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+          }
+          .dropdown a:hover {
+            background-color: #f1f1f1;
+            color: #2D8686;
           }
           .search-btn, .login-btn, .register-btn {
             background:rgb(51, 88, 155);
@@ -139,58 +149,6 @@ const Navbar = () => {
           .search-btn:hover, .login-btn:hover, .register-btn:hover {
             background: #223A60;
           }
-          .languages{
-            background:rgb(51, 88, 155);
-            }
-            .dropdown {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          background-color: white;
-          color: black;
-          min-width: 180px;
-          border-radius: 4px;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(10px);
-          transition: all 0.2s ease;
-          z-index: 100;
-        }
-           .nav-links {
-          list-style: none;
-          display: flex;
-          margin: 0;
-          padding: 0;
-        }
-        .nav-links li {
-          margin: 0 1rem;
-          position: relative;
-        }
-        .nav-links a {
-          color: white;
-          text-decoration: none;
-          font-size: ${fontSizeMap[fontSize]};
-          position: relative;
-        }
-        .nav-links a:hover {
-          color: #FFF9C4;
-        }
-          .nav-links li:hover .dropdown {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-        }
-        .dropdown a {
-          display: block;
-          padding: 10px 15px;
-          color: #333;
-          text-decoration: none;
-        }
-        .dropdown a:hover {
-          background-color: #f1f1f1;
-          color: #003087;
-        }
         `}
       </style>
       <div className="logo">
@@ -222,18 +180,6 @@ const Navbar = () => {
         ))}
       </ul>
       <div className="nav-options">
-        <div className="font-size">
-          <button onClick={handleFontDecrease}>A-</button>
-          <button onClick={handleFontIncrease}>A+</button>
-        </div>
-        <select className="language">
-          <option value="english">English</option>
-          <option value="hindi">Hindi</option>
-        </select>
-       
-        <button className="search-btn" aria-label="Search">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="white" strokeWidth="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
-        </button>
         <button className="login-btn" aria-label="Login">
           Login
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" stroke="white" strokeWidth="2"/><path d="M4 20c0-2.21 3.582-4 8-4s8 1.79 8 4" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
