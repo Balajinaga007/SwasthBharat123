@@ -589,7 +589,7 @@ const Slider = () => {
       ref={heroRef}
       className="relative md:h-[410vh] bg-ta-white"
     >
-      <div className="slideshow-container sticky top-0 h-[30vh] md:h-screen overflow-hidden z-50 bg-white">
+      <div className="slideshow-container sticky top-0 h-[30vh] h-screen overflow-hidden z-50 bg-white">
         {/* Slides */}
         {[1, 2, 3].map((slideNumber, index) => (
           <img

@@ -59,6 +59,21 @@ function MainContent() {
       });
     }
   }, [activeStep])
+//   useEffect(() => {
+//   if (activeStep && stagesContainer?.current) {
+//     const offset = 360; // 8rem = 128px
+
+//     const element = stagesContainer.current;
+//     const rect = element.getBoundingClientRect();
+//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+//     window.scrollTo({
+//       top: rect.top + scrollTop - offset,
+//       behavior: 'smooth',
+//     });
+//   }
+// }, [activeStep]);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Navigation animation
@@ -228,7 +243,7 @@ function MainContent() {
   const currentStep = stagesData?.find(val => val.id === activeStep)?.health_ecosystem_items?.length ? stagesData?.find(val => val.id === activeStep) : stagesData[0]
 
   return (
-    <div className="min-h-screen bg-ta-cream">
+    <div className="min-h-screen bg-ta-cream ">
       {/* Navigation */}
       <Navbar />
 
@@ -337,7 +352,7 @@ function MainContent() {
       {!loading ?
         <>
 
-          <section className=" py-8  font-work-sans " style={{ backgroundColor: ' #CDCFF7', fontFamily: 'Work Sans, sans-serif' }}>
+          <section className=" py-8  font-work-sans" style={{ backgroundColor: ' #CDCFF7', fontFamily: 'Work Sans, sans-serif' }}>
             <section className="pt-0 md:pb-16 px-4  flex items-center justify-center">
               <div className="max-w-4xl mx-auto text-center ">
                 <h2 className="text-3xl md:text-4xl font-light  mb-6">
@@ -453,6 +468,7 @@ function MainContent() {
 
 function App() {
   return (
+    <div className=' '>
     <Router>
       <Routes>
         <Route path="/" element={<MainContent />} />
@@ -467,6 +483,7 @@ function App() {
         <Route path="/stageDetails/:stageid/:type/:id" element={<StagesInfo />} />
       </Routes>
     </Router>
+    </div>
   )
 }
 
