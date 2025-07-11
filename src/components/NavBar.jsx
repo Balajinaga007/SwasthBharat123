@@ -240,7 +240,7 @@ const Navbar = () => {
             {navas.map((a) => (
               <li key={a.label}>
                 <a
-                  to={a.label !== "Life Stages" ? a.to : ""}
+                  href={a.label !== "Life Stages" ? a.to : "/"}
                   className={a.match.test(location.pathname) ? "active" : ""}
                 >
                   {a.label}
